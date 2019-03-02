@@ -11,6 +11,7 @@ import java.awt.Image;
 import java.io.File;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
 /**
@@ -40,6 +41,9 @@ public class MainLayout extends javax.swing.JFrame {
         DashBoard = new javax.swing.JPanel();
         navigation = new javax.swing.JButton();
         ImageChooser = new javax.swing.JPanel();
+        camera = new javax.swing.JButton();
+        open = new javax.swing.JButton();
+        next = new javax.swing.JButton();
         ImageConversion = new javax.swing.JPanel();
         ImageLoad = new javax.swing.JLabel();
         ImageStatus = new javax.swing.JPanel();
@@ -70,6 +74,33 @@ public class MainLayout extends javax.swing.JFrame {
         DashBoard.add(navigation, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 290, 330, 70));
 
         getContentPane().add(DashBoard, "card2");
+
+        ImageChooser.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        camera.setText("camera");
+        camera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cameraActionPerformed(evt);
+            }
+        });
+        ImageChooser.add(camera, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 100, 30));
+
+        open.setText("Open");
+        open.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                openActionPerformed(evt);
+            }
+        });
+        ImageChooser.add(open, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 100, 30));
+
+        next.setText("Next");
+        next.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextActionPerformed(evt);
+            }
+        });
+        ImageChooser.add(next, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 293, 120, 30));
+
         getContentPane().add(ImageChooser, "card3");
 
         ImageLoad.setBackground(new java.awt.Color(204, 255, 204));
@@ -197,8 +228,23 @@ public class MainLayout extends javax.swing.JFrame {
 
     private void navigationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navigationActionPerformed
         CardLayout card = (CardLayout) getContentPane().getLayout();
-        card.show(getContentPane(), "card4");
+        card.show(getContentPane(), "card3");
     }//GEN-LAST:event_navigationActionPerformed
+
+    private void cameraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cameraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cameraActionPerformed
+
+    private void nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextActionPerformed
+         CardLayout card = (CardLayout) getContentPane().getLayout();
+        card.show(getContentPane(), "card4");
+    }//GEN-LAST:event_nextActionPerformed
+
+    private void openActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openActionPerformed
+        JFileChooser file=new JFileChooser();
+                    int fc=file.showOpenDialog(null);
+
+    }//GEN-LAST:event_openActionPerformed
 
     /**
      * @param args the command line arguments
@@ -245,12 +291,15 @@ public class MainLayout extends javax.swing.JFrame {
     private javax.swing.JPanel ImageStatus;
     private javax.swing.JMenuBar MenuBar;
     private javax.swing.JButton SaveText;
+    private javax.swing.JButton camera;
     private javax.swing.JMenu file;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JLabel name;
     private javax.swing.JButton navigation;
+    private javax.swing.JButton next;
+    private javax.swing.JButton open;
     // End of variables declaration//GEN-END:variables
 
 }
