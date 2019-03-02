@@ -22,6 +22,7 @@ public class MainLayout extends javax.swing.JFrame {
     /**
      * Creates new form MainLayout
      */
+    private String path;
     public MainLayout() {
         initComponents();
         //createcustompanel();
@@ -42,8 +43,10 @@ public class MainLayout extends javax.swing.JFrame {
         ImageConversion = new javax.swing.JPanel();
         ImageLoad = new javax.swing.JLabel();
         ImageStatus = new javax.swing.JPanel();
+        jProgressBar1 = new javax.swing.JProgressBar();
+        jLabel2 = new javax.swing.JLabel();
         SaveText = new javax.swing.JButton();
-        check_hieght_and_width = new javax.swing.JTextField();
+        name = new javax.swing.JLabel();
         History = new javax.swing.JPanel();
         MenuBar = new javax.swing.JMenuBar();
         file = new javax.swing.JMenu();
@@ -70,55 +73,69 @@ public class MainLayout extends javax.swing.JFrame {
         getContentPane().add(ImageChooser, "card3");
 
         ImageLoad.setBackground(new java.awt.Color(204, 255, 204));
-        ImageLoad.setMaximumSize(new java.awt.Dimension(300, 300));
-        ImageLoad.setMinimumSize(new java.awt.Dimension(300, 300));
+        ImageLoad.setMaximumSize(null);
+        ImageLoad.setMinimumSize(null);
         ImageLoad.setPreferredSize(new java.awt.Dimension(300, 300));
+        ImageLoad.setVerifyInputWhenFocusTarget(false);
 
-        ImageStatus.setLayout(new javax.swing.BoxLayout(ImageStatus, javax.swing.BoxLayout.LINE_AXIS));
+        ImageStatus.setLayout(new javax.swing.BoxLayout(ImageStatus, javax.swing.BoxLayout.Y_AXIS));
+
+        jProgressBar1.setBackground(new java.awt.Color(153, 153, 0));
+        jProgressBar1.setMaximumSize(new java.awt.Dimension(32767, 100));
+        jProgressBar1.setMinimumSize(new java.awt.Dimension(10, 100));
+        jProgressBar1.setPreferredSize(new java.awt.Dimension(146, 100));
+        ImageStatus.add(jProgressBar1);
+
+        jLabel2.setBackground(new java.awt.Color(51, 255, 51));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel2.setText("Convertion Status");
+        jLabel2.setMaximumSize(new java.awt.Dimension(32800, 100));
+        jLabel2.setMinimumSize(new java.awt.Dimension(34, 100));
+        jLabel2.setPreferredSize(new java.awt.Dimension(32800, 100));
+        ImageStatus.add(jLabel2);
 
         SaveText.setText("jButton1");
+
+        name.setText("jLabel1");
 
         javax.swing.GroupLayout ImageConversionLayout = new javax.swing.GroupLayout(ImageConversion);
         ImageConversion.setLayout(ImageConversionLayout);
         ImageConversionLayout.setHorizontalGroup(
             ImageConversionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ImageConversionLayout.createSequentialGroup()
-                .addGroup(ImageConversionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(ImageConversionLayout.createSequentialGroup()
-                        .addGap(95, 95, 95)
-                        .addComponent(ImageLoad, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ImageConversionLayout.createSequentialGroup()
-                        .addGap(158, 158, 158)
-                        .addComponent(check_hieght_and_width, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
-                .addComponent(ImageStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(87, 87, 87)
+                .addComponent(ImageLoad, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(ImageConversionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(ImageStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(name, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE))
                 .addGap(121, 121, 121))
-            .addGroup(ImageConversionLayout.createSequentialGroup()
-                .addGap(306, 306, 306)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ImageConversionLayout.createSequentialGroup()
+                .addContainerGap(365, Short.MAX_VALUE)
                 .addComponent(SaveText, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(302, 302, 302))
         );
         ImageConversionLayout.setVerticalGroup(
             ImageConversionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ImageConversionLayout.createSequentialGroup()
-                .addGroup(ImageConversionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(34, 34, 34)
+                .addGroup(ImageConversionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(ImageLoad, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(ImageConversionLayout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(ImageStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ImageConversionLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(ImageLoad, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(39, 39, 39)
-                        .addComponent(check_hieght_and_width, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(51, 51, 51)))
-                .addGap(18, 18, 18)
+                        .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ImageStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(25, 25, 25)
                 .addComponent(SaveText, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
+        ImageLoad.setSize(new java.awt.Dimension(219, 236));
         try
         {
             File file = new File("/Users/Suman/Downloads/suman.jpg");
+            path = file.getAbsolutePath();
             Image image = ImageIO.read(file);
             Image scaledInstance = image.getScaledInstance(ImageLoad.getWidth(), ImageLoad.getHeight(), Image.SCALE_SMOOTH);
             ImageIcon img = new ImageIcon(scaledInstance);
@@ -128,15 +145,22 @@ public class MainLayout extends javax.swing.JFrame {
         {
             e.printStackTrace();
         }
-        ImageStatus.setLayout(new javax.swing.BoxLayout(ImageStatus, javax.swing.BoxLayout.Y_AXIS));
+        /*ImageStatus.setLayout(new javax.swing.BoxLayout(ImageStatus, javax.swing.BoxLayout.Y_AXIS));
         JLabel name = new JLabel("Name of the Image");
         ImageStatus.add(name);
         JProgressBar ProgressBar = new JProgressBar();
         ProgressBar.setUI(new ProgressCircleUI());
         ImageStatus.add(ProgressBar);
         JLabel Convert = new JLabel("Converting");
-        ImageStatus.add(Convert);
-        check_hieght_and_width.setText(String.valueOf(ImageLoad.getWidth()));
+        ImageStatus.add(Convert);*/
+        name.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+
+        name.setHorizontalAlignment(javax.swing.JLabel.CENTER);
+        // Code adding the component to the parent container - not shown here
+        int index = path.lastIndexOf('\\');
+        path = path.substring(index+1);
+
+        name.setText(path);
 
         getContentPane().add(ImageConversion, "card4");
 
@@ -221,9 +245,11 @@ public class MainLayout extends javax.swing.JFrame {
     private javax.swing.JPanel ImageStatus;
     private javax.swing.JMenuBar MenuBar;
     private javax.swing.JButton SaveText;
-    private javax.swing.JTextField check_hieght_and_width;
     private javax.swing.JMenu file;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JProgressBar jProgressBar1;
+    private javax.swing.JLabel name;
     private javax.swing.JButton navigation;
     // End of variables declaration//GEN-END:variables
 
