@@ -314,6 +314,11 @@ public class frame extends javax.swing.JFrame {
         
     
     }
+    
+    private void mx()
+    {
+          
+    }
     private void tie()
     {
         String b11 = b1.getText(); 
