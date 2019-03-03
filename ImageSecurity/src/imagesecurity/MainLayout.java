@@ -232,7 +232,9 @@ public class MainLayout extends javax.swing.JFrame {
     }//GEN-LAST:event_navigationActionPerformed
 
     private void cameraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cameraActionPerformed
-        // TODO add your handling code here:
+       camera f=new camera();
+       f.setVisible(true);
+        f.start1();
     }//GEN-LAST:event_cameraActionPerformed
 
     private void nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextActionPerformed
