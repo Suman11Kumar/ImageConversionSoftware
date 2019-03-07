@@ -115,20 +115,20 @@ public class MainLayout extends javax.swing.JFrame {
         jProgressBar1.setMaximumSize(new java.awt.Dimension(32767, 100));
         jProgressBar1.setMinimumSize(new java.awt.Dimension(10, 100));
         jProgressBar1.setPreferredSize(new java.awt.Dimension(146, 100));
+        jProgressBar1.setUI(new ProgressCircleUI());
         ImageStatus.add(jProgressBar1);
 
         jLabel2.setBackground(new java.awt.Color(51, 255, 51));
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel2.setText("Convertion Status");
+        jLabel2.setText("Convertion Status...");
         jLabel2.setMaximumSize(new java.awt.Dimension(32800, 100));
         jLabel2.setMinimumSize(new java.awt.Dimension(34, 100));
         jLabel2.setPreferredSize(new java.awt.Dimension(32800, 100));
         ImageStatus.add(jLabel2);
 
-        SaveText.setText("jButton1");
-
-        name.setText("jLabel1");
+        SaveText.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        SaveText.setText("Save Text File");
 
         javax.swing.GroupLayout ImageConversionLayout = new javax.swing.GroupLayout(ImageConversion);
         ImageConversion.setLayout(ImageConversionLayout);
