@@ -6,6 +6,7 @@
 package imagesecurity;
 
 import imagesecurity.ImageTotext.DashBoard_layout;
+import imagesecurity.ImageTotext.History_layout;
 import java.awt.CardLayout;
 import imagesecurity.ImageTotext.ImageChooser_layout;
 import imagesecurity.ImageTotext.ImageConversion_layout;
@@ -115,6 +116,8 @@ public class MainLayout extends javax.swing.JFrame {
         );
 
         getContentPane().add(History, "card5");
+        History_layout HLayout = new History_layout();
+        HLayout.run(History,getContentPane());
 
         MenuBar.setBackground(new java.awt.Color(255, 0, 51));
         MenuBar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
