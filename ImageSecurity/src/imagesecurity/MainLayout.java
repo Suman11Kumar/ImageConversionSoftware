@@ -5,15 +5,11 @@
  */
 package imagesecurity;
 
-import imagesecurity.ImageTotext.ProgressCircleUI;
+import imagesecurity.ImageTotext.DashBoard_layout;
 import java.awt.CardLayout;
-import java.awt.Image;
-import java.io.File;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
-import javax.swing.JLabel;
-import javax.swing.JProgressBar;
+import imagesecurity.ImageTotext.ImageChooser_layout;
+import imagesecurity.ImageTotext.ImageConversion_layout;
+
 /**
  *
  * @author Suman
@@ -23,7 +19,6 @@ public class MainLayout extends javax.swing.JFrame {
     /**
      * Creates new form MainLayout
      */
-    private String path;
     public MainLayout() {
         initComponents();
         //createcustompanel();
@@ -39,22 +34,20 @@ public class MainLayout extends javax.swing.JFrame {
     private void initComponents() {
 
         DashBoard = new javax.swing.JPanel();
-        navigation = new javax.swing.JButton();
         ImageChooser = new javax.swing.JPanel();
-        camera = new javax.swing.JButton();
-        open = new javax.swing.JButton();
-        next = new javax.swing.JButton();
         ImageConversion = new javax.swing.JPanel();
-        ImageLoad = new javax.swing.JLabel();
-        ImageStatus = new javax.swing.JPanel();
-        jProgressBar1 = new javax.swing.JProgressBar();
-        jLabel2 = new javax.swing.JLabel();
-        SaveText = new javax.swing.JButton();
-        name = new javax.swing.JLabel();
         History = new javax.swing.JPanel();
         MenuBar = new javax.swing.JMenuBar();
         file = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        file_new = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        file_history = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        file_exit = new javax.swing.JMenuItem();
+        Help = new javax.swing.JMenu();
+        help_contents = new javax.swing.JMenuItem();
+        help_report = new javax.swing.JMenuItem();
+        AboutUs = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(900, 700));
@@ -63,137 +56,52 @@ public class MainLayout extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new java.awt.CardLayout());
 
-        DashBoard.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        DashBoard.setBackground(new java.awt.Color(191, 181, 173));
 
-        navigation.setText("Show My page");
-        navigation.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                navigationActionPerformed(evt);
-            }
-        });
-        DashBoard.add(navigation, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 290, 330, 70));
+        javax.swing.GroupLayout DashBoardLayout = new javax.swing.GroupLayout(DashBoard);
+        DashBoard.setLayout(DashBoardLayout);
+        DashBoardLayout.setHorizontalGroup(
+            DashBoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 955, Short.MAX_VALUE)
+        );
+        DashBoardLayout.setVerticalGroup(
+            DashBoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 428, Short.MAX_VALUE)
+        );
 
         getContentPane().add(DashBoard, "card2");
+        DashBoard_layout layout = new DashBoard_layout();
+        layout.run(DashBoard,getContentPane());
 
-        ImageChooser.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        camera.setText("camera");
-        camera.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cameraActionPerformed(evt);
-            }
-        });
-        ImageChooser.add(camera, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 100, 30));
-
-        open.setText("Open");
-        open.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                openActionPerformed(evt);
-            }
-        });
-        ImageChooser.add(open, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 100, 30));
-
-        next.setText("Next");
-        next.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nextActionPerformed(evt);
-            }
-        });
-        ImageChooser.add(next, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 293, 120, 30));
+        javax.swing.GroupLayout ImageChooserLayout = new javax.swing.GroupLayout(ImageChooser);
+        ImageChooser.setLayout(ImageChooserLayout);
+        ImageChooserLayout.setHorizontalGroup(
+            ImageChooserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 955, Short.MAX_VALUE)
+        );
+        ImageChooserLayout.setVerticalGroup(
+            ImageChooserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 428, Short.MAX_VALUE)
+        );
 
         getContentPane().add(ImageChooser, "card3");
-
-        ImageLoad.setBackground(new java.awt.Color(204, 255, 204));
-        ImageLoad.setMaximumSize(null);
-        ImageLoad.setMinimumSize(null);
-        ImageLoad.setPreferredSize(new java.awt.Dimension(300, 300));
-        ImageLoad.setVerifyInputWhenFocusTarget(false);
-
-        ImageStatus.setLayout(new javax.swing.BoxLayout(ImageStatus, javax.swing.BoxLayout.Y_AXIS));
-
-        jProgressBar1.setBackground(new java.awt.Color(153, 153, 0));
-        jProgressBar1.setMaximumSize(new java.awt.Dimension(32767, 100));
-        jProgressBar1.setMinimumSize(new java.awt.Dimension(10, 100));
-        jProgressBar1.setPreferredSize(new java.awt.Dimension(146, 100));
-        jProgressBar1.setUI(new ProgressCircleUI());
-        ImageStatus.add(jProgressBar1);
-
-        jLabel2.setBackground(new java.awt.Color(51, 255, 51));
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel2.setText("Convertion Status...");
-        jLabel2.setMaximumSize(new java.awt.Dimension(32800, 100));
-        jLabel2.setMinimumSize(new java.awt.Dimension(34, 100));
-        jLabel2.setPreferredSize(new java.awt.Dimension(32800, 100));
-        ImageStatus.add(jLabel2);
-
-        SaveText.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        SaveText.setText("Save Text File");
+        ImageChooser_layout IC_layout = new ImageChooser_layout();
+        IC_layout.run(ImageChooser,getContentPane());
 
         javax.swing.GroupLayout ImageConversionLayout = new javax.swing.GroupLayout(ImageConversion);
         ImageConversion.setLayout(ImageConversionLayout);
         ImageConversionLayout.setHorizontalGroup(
             ImageConversionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ImageConversionLayout.createSequentialGroup()
-                .addGap(87, 87, 87)
-                .addComponent(ImageLoad, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(ImageConversionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ImageStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(name, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE))
-                .addGap(121, 121, 121))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ImageConversionLayout.createSequentialGroup()
-                .addContainerGap(365, Short.MAX_VALUE)
-                .addComponent(SaveText, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(302, 302, 302))
+            .addGap(0, 955, Short.MAX_VALUE)
         );
         ImageConversionLayout.setVerticalGroup(
             ImageConversionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ImageConversionLayout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addGroup(ImageConversionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(ImageLoad, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(ImageConversionLayout.createSequentialGroup()
-                        .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ImageStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(25, 25, 25)
-                .addComponent(SaveText, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(64, Short.MAX_VALUE))
+            .addGap(0, 428, Short.MAX_VALUE)
         );
 
-        ImageLoad.setSize(new java.awt.Dimension(219, 236));
-        try
-        {
-            File file = new File("/Users/Suman/Downloads/suman.jpg");
-            path = file.getAbsolutePath();
-            Image image = ImageIO.read(file);
-            Image scaledInstance = image.getScaledInstance(ImageLoad.getWidth(), ImageLoad.getHeight(), Image.SCALE_SMOOTH);
-            ImageIcon img = new ImageIcon(scaledInstance);
-            ImageLoad.setIcon(img);
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }
-        /*ImageStatus.setLayout(new javax.swing.BoxLayout(ImageStatus, javax.swing.BoxLayout.Y_AXIS));
-        JLabel name = new JLabel("Name of the Image");
-        ImageStatus.add(name);
-        JProgressBar ProgressBar = new JProgressBar();
-        ProgressBar.setUI(new ProgressCircleUI());
-        ImageStatus.add(ProgressBar);
-        JLabel Convert = new JLabel("Converting");
-        ImageStatus.add(Convert);*/
-        name.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-
-        name.setHorizontalAlignment(javax.swing.JLabel.CENTER);
-        // Code adding the component to the parent container - not shown here
-        int index = path.lastIndexOf('\\');
-        path = path.substring(index+1);
-
-        name.setText(path);
-
         getContentPane().add(ImageConversion, "card4");
+        ImageConversion_layout ICON_layout = new ImageConversion_layout();
+        ICON_layout.run(ImageConversion, getContentPane());
 
         javax.swing.GroupLayout HistoryLayout = new javax.swing.GroupLayout(History);
         History.setLayout(HistoryLayout);
@@ -216,37 +124,84 @@ public class MainLayout extends javax.swing.JFrame {
         MenuBar.setPreferredSize(new java.awt.Dimension(60, 50));
 
         file.setText("File");
+        file.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        file.setPreferredSize(new java.awt.Dimension(70, 19));
+
+        file_new.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
+        file_new.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        file_new.setText("New");
+        file_new.setPreferredSize(new java.awt.Dimension(119, 27));
+        file_new.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                file_newActionPerformed(evt);
+            }
+        });
+        file.add(file_new);
+        file.add(jSeparator1);
+
+        file_history.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_MASK));
+        file_history.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        file_history.setText("History");
+        file_history.setPreferredSize(new java.awt.Dimension(119, 27));
+        file_history.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                file_historyActionPerformed(evt);
+            }
+        });
+        file.add(file_history);
+        file.add(jSeparator2);
+
+        file_exit.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        file_exit.setText("Exit");
+        file_exit.setPreferredSize(new java.awt.Dimension(119, 27));
+        file_exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                file_exitActionPerformed(evt);
+            }
+        });
+        file.add(file_exit);
+
         MenuBar.add(file);
 
-        jMenu2.setText("Edit");
-        MenuBar.add(jMenu2);
+        Help.setText("Help");
+        Help.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Help.setPreferredSize(new java.awt.Dimension(70, 25));
+
+        help_contents.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        help_contents.setText("Help Contents");
+        help_contents.setPreferredSize(new java.awt.Dimension(131, 27));
+        Help.add(help_contents);
+
+        help_report.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        help_report.setText("Report Issues");
+        help_report.setPreferredSize(new java.awt.Dimension(131, 27));
+        Help.add(help_report);
+
+        MenuBar.add(Help);
+
+        AboutUs.setText("About Us");
+        AboutUs.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        AboutUs.setPreferredSize(new java.awt.Dimension(100, 25));
+        MenuBar.add(AboutUs);
 
         setJMenuBar(MenuBar);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void navigationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navigationActionPerformed
+    private void file_newActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_file_newActionPerformed
         CardLayout card = (CardLayout) getContentPane().getLayout();
-        card.show(getContentPane(), "card3");
-    }//GEN-LAST:event_navigationActionPerformed
+        card.show(getContentPane(), "card2");
+    }//GEN-LAST:event_file_newActionPerformed
 
-    private void cameraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cameraActionPerformed
-       camera f=new camera();
-       f.setVisible(true);
-        f.start1();
-    }//GEN-LAST:event_cameraActionPerformed
+    private void file_historyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_file_historyActionPerformed
+       CardLayout card = (CardLayout) getContentPane().getLayout();
+        card.show(getContentPane(), "card5");
+    }//GEN-LAST:event_file_historyActionPerformed
 
-    private void nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextActionPerformed
-         CardLayout card = (CardLayout) getContentPane().getLayout();
-        card.show(getContentPane(), "card4");
-    }//GEN-LAST:event_nextActionPerformed
-
-    private void openActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openActionPerformed
-        JFileChooser file=new JFileChooser();
-                    int fc=file.showOpenDialog(null);
-
-    }//GEN-LAST:event_openActionPerformed
+    private void file_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_file_exitActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_file_exitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -285,23 +240,21 @@ public class MainLayout extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu AboutUs;
     private javax.swing.JPanel DashBoard;
+    private javax.swing.JMenu Help;
     private javax.swing.JPanel History;
     private javax.swing.JPanel ImageChooser;
     private javax.swing.JPanel ImageConversion;
-    private javax.swing.JLabel ImageLoad;
-    private javax.swing.JPanel ImageStatus;
     private javax.swing.JMenuBar MenuBar;
-    private javax.swing.JButton SaveText;
-    private javax.swing.JButton camera;
     private javax.swing.JMenu file;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JProgressBar jProgressBar1;
-    private javax.swing.JLabel name;
-    private javax.swing.JButton navigation;
-    private javax.swing.JButton next;
-    private javax.swing.JButton open;
+    private javax.swing.JMenuItem file_exit;
+    private javax.swing.JMenuItem file_history;
+    private javax.swing.JMenuItem file_new;
+    private javax.swing.JMenuItem help_contents;
+    private javax.swing.JMenuItem help_report;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
     // End of variables declaration//GEN-END:variables
 
 }
