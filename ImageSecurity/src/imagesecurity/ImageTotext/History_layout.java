@@ -15,7 +15,7 @@ public class History_layout {
     
     public void run(javax.swing.JPanel History, Container container)
     {
-        History.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        History.setLayout(new java.awt.CardLayout());
         
     }
 }
