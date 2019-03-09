@@ -5,6 +5,9 @@
  */
 package imagesecurity;
 
+
+
+
 import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamPanel;
 import com.github.sarxos.webcam.WebcamResolution;
@@ -26,7 +29,6 @@ public class camera extends javax.swing.JFrame {
   protected Dimension cs=WebcamResolution.VGA.getSize();
   protected Webcam wcam=Webcam.getDefault();
   protected WebcamPanel wpanel=new WebcamPanel(wcam,ds,false);
-
     
     public camera() {
         initComponents();

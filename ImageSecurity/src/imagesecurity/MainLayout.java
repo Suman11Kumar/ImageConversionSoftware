@@ -10,7 +10,12 @@ import imagesecurity.ImageTotext.History_layout;
 import java.awt.CardLayout;
 import imagesecurity.ImageTotext.ImageChooser_layout;
 import imagesecurity.ImageTotext.ImageConversion_layout;
-
+import imagesecurity.CaptchaImage;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JLabel;
 /**
  *
  * @author Suman
@@ -51,7 +56,6 @@ public class MainLayout extends javax.swing.JFrame {
         AboutUs = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(900, 700));
         setMinimumSize(new java.awt.Dimension(800, 500));
         setPreferredSize(new java.awt.Dimension(800, 500));
         setResizable(false);
@@ -74,20 +78,11 @@ public class MainLayout extends javax.swing.JFrame {
         DashBoard_layout layout = new DashBoard_layout();
         layout.run(DashBoard,getContentPane());
 
-        javax.swing.GroupLayout ImageChooserLayout = new javax.swing.GroupLayout(ImageChooser);
-        ImageChooser.setLayout(ImageChooserLayout);
-        ImageChooserLayout.setHorizontalGroup(
-            ImageChooserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 955, Short.MAX_VALUE)
-        );
-        ImageChooserLayout.setVerticalGroup(
-            ImageChooserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 428, Short.MAX_VALUE)
-        );
-
+        ImageChooser.setLayout(new javax.swing.BoxLayout(ImageChooser, javax.swing.BoxLayout.X_AXIS));
         getContentPane().add(ImageChooser, "card3");
         ImageChooser_layout IC_layout = new ImageChooser_layout();
         IC_layout.run(ImageChooser,getContentPane());
+        ImageChooser.setBackground(new java.awt.Color(191, 181, 173));
 
         javax.swing.GroupLayout ImageConversionLayout = new javax.swing.GroupLayout(ImageConversion);
         ImageConversion.setLayout(ImageConversionLayout);
@@ -104,17 +99,8 @@ public class MainLayout extends javax.swing.JFrame {
         ImageConversion_layout ICON_layout = new ImageConversion_layout();
         ICON_layout.run(ImageConversion, getContentPane());
 
-        javax.swing.GroupLayout HistoryLayout = new javax.swing.GroupLayout(History);
-        History.setLayout(HistoryLayout);
-        HistoryLayout.setHorizontalGroup(
-            HistoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 955, Short.MAX_VALUE)
-        );
-        HistoryLayout.setVerticalGroup(
-            HistoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 428, Short.MAX_VALUE)
-        );
-
+        History.setBackground(new java.awt.Color(191, 181, 173));
+        History.setLayout(new java.awt.CardLayout());
         getContentPane().add(History, "card5");
         History_layout HLayout = new History_layout();
         HLayout.run(History,getContentPane());
