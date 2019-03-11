@@ -10,12 +10,16 @@ import imagesecurity.ImageTotext.History_layout;
 import java.awt.CardLayout;
 import imagesecurity.ImageTotext.ImageChooser_layout;
 import imagesecurity.ImageTotext.ImageConversion_layout;
-import imagesecurity.CaptchaImage;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import java.io.File;
+import java.awt.Image;
+import javax.imageio.ImageIO;
+import javax.swing.SwingConstants;
 /**
  *
  * @author Suman
@@ -42,7 +46,8 @@ public class MainLayout extends javax.swing.JFrame {
         DashBoard = new javax.swing.JPanel();
         ImageChooser = new javax.swing.JPanel();
         ImageConversion = new javax.swing.JPanel();
-        History = new javax.swing.JPanel();
+        CaptchaValidation = new javax.swing.JPanel();
+        ViewHistory = new javax.swing.JPanel();
         MenuBar = new javax.swing.JMenuBar();
         file = new javax.swing.JMenu();
         file_new = new javax.swing.JMenuItem();
@@ -99,11 +104,26 @@ public class MainLayout extends javax.swing.JFrame {
         ImageConversion_layout ICON_layout = new ImageConversion_layout();
         ICON_layout.run(ImageConversion, getContentPane());
 
-        History.setBackground(new java.awt.Color(191, 181, 173));
-        History.setLayout(new java.awt.CardLayout());
-        getContentPane().add(History, "card5");
+        CaptchaValidation.setBackground(new java.awt.Color(191, 181, 173));
+        CaptchaValidation.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 100, 100));
+        getContentPane().add(CaptchaValidation, "card5");
         History_layout HLayout = new History_layout();
-        HLayout.run(History,getContentPane());
+        HLayout.run(CaptchaValidation,getContentPane());
+
+        ViewHistory.setBackground(new java.awt.Color(191, 181, 173));
+
+        javax.swing.GroupLayout ViewHistoryLayout = new javax.swing.GroupLayout(ViewHistory);
+        ViewHistory.setLayout(ViewHistoryLayout);
+        ViewHistoryLayout.setHorizontalGroup(
+            ViewHistoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 955, Short.MAX_VALUE)
+        );
+        ViewHistoryLayout.setVerticalGroup(
+            ViewHistoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 428, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(ViewHistory, "card6");
 
         MenuBar.setBackground(new java.awt.Color(255, 0, 51));
         MenuBar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -230,12 +250,13 @@ public class MainLayout extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu AboutUs;
+    private javax.swing.JPanel CaptchaValidation;
     private javax.swing.JPanel DashBoard;
     private javax.swing.JMenu Help;
-    private javax.swing.JPanel History;
     private javax.swing.JPanel ImageChooser;
     private javax.swing.JPanel ImageConversion;
     private javax.swing.JMenuBar MenuBar;
+    private javax.swing.JPanel ViewHistory;
     private javax.swing.JMenu file;
     private javax.swing.JMenuItem file_exit;
     private javax.swing.JMenuItem file_history;

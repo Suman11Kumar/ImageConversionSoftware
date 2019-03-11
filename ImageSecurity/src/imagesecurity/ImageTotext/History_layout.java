@@ -25,51 +25,45 @@ import javax.swing.*;
 public class History_layout {
     
     private JPanel Security;
-    private JPanel Past_conversions;
-    private CardLayout card;
+    private JPanel Captcha_submit;
     
-    public void run(javax.swing.JPanel History, Container container) 
+    public void run(javax.swing.JPanel Validate, Container container) 
     {
-        JPanel Captcha;
+        
         JLabel captchaImage;
         JButton Refresh;
-        JTextField Enter_Cap;
+        JTextField Enter_cap;
         ImageIcon icon;
-        JPanel spanel1,spanel2;
         JButton Submit;
-        History.setLayout(new java.awt.CardLayout());
         
+        Captcha_submit = new JPanel();
         Security = new JPanel();
-        Past_conversions = new JPanel();
-        spanel1 = new JPanel();
-        spanel2 = new JPanel();
-        Captcha = new JPanel();
         captchaImage = new JLabel();
         Refresh = new JButton();
-        Enter_Cap = new JTextField();
+        Enter_cap = new JTextField();
         Submit = new JButton();
-        card = (CardLayout) History.getLayout();
-        spanel1.setBounds(200,200,Security.getWidth()/2,Security.getHeight()/2);
-        spanel2.setBounds(300,300,400,400);
-        spanel1.add(spanel2);
-        History.add(Security,"card6");
-        History.add(Past_conversions,"card7");
         
+        Captcha_submit.setBackground(new java.awt.Color(209, 193, 180));
+        Captcha_submit.setPreferredSize(new java.awt.Dimension(300, 500));
+        Captcha_submit.setLayout(new javax.swing.BoxLayout(Captcha_submit, javax.swing.BoxLayout.Y_AXIS));
+
+        Security.setBackground(new java.awt.Color(217, 186, 212));
+        Security.setMaximumSize(new java.awt.Dimension(550, 200));
+        Security.setPreferredSize(new java.awt.Dimension(100, 100));
+        Security.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 25));
+
+        captchaImage.setToolTipText("");
+        captchaImage.setPreferredSize(new java.awt.Dimension(160, 100));
+        Security.add(captchaImage);
         CaptchaImage obj = new CaptchaImage();
         BufferedImage image = obj.getCaptchaImage();
-        
-        Captcha.setLayout(new javax.swing.BoxLayout(Captcha, BoxLayout.X_AXIS));
-        Captcha.setPreferredSize(new java.awt.Dimension(500, 300));
-        
         //captchaImage.setPreferredSize(new java.awt.Dimension(300,300));
         icon = new ImageIcon(image);
         captchaImage.setIcon(icon);
-        spanel2.add(captchaImage);
-        
+        Security.add(Refresh);
         BufferedImage refresh_btn;
         try{
-             Refresh.setPreferredSize(new java.awt.Dimension(100,50));
-             Refresh.setBounds(300, 300, 20 , 30);
+            Refresh.setBounds(0,0,30,40);
             File f = new File("./build/classes/imagesecurity/Icons/refresh.jpg");
             String path = f.getAbsoluteFile().toString();
             System.out.println(path);
@@ -77,21 +71,27 @@ public class History_layout {
             Image scaled = refresh_btn.getScaledInstance(Refresh.getWidth(),Refresh.getHeight() , Image.SCALE_SMOOTH);
             ImageIcon ref = new ImageIcon(scaled);
             Refresh.setIcon(ref);
-            
-           
         }
         catch(IOException e){
             e.printStackTrace();
         }
-        
-        spanel2.add(Refresh);
-        spanel2.add(Enter_Cap);
-        Captcha.add(spanel1);
-        Security.add(Captcha);
-        Security.add(Submit);
-        Enter_Cap.setPreferredSize(new java.awt.Dimension(300, 50));
-        
-        
+
+        Enter_cap.setMargin(new java.awt.Insets(1, 4, 10, 4));
+        Enter_cap.setPreferredSize(new java.awt.Dimension(250, 50));
+        Security.add(Enter_cap);
+
+        Captcha_submit.add(Security);
+
+        Submit.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        Submit.setText("Submit");
+        Submit.setAutoscrolls(true);
+        Submit.setMaximumSize(new java.awt.Dimension(500, 50));
+        Submit.setMinimumSize(new java.awt.Dimension(300, 50));
+        Submit.setPreferredSize(new java.awt.Dimension(500, 50));
+        Captcha_submit.add(Submit);
+        Submit.setHorizontalAlignment(SwingConstants.CENTER);
+
+        Validate.add(Captcha_submit);
         Refresh.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -105,8 +105,11 @@ public class History_layout {
         Submit.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               
+               CardLayout card = (CardLayout) container.getLayout();
+               card.show(container, "card6");
             }
         });
+        
+        
     }
 }
