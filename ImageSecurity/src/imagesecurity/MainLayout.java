@@ -69,7 +69,7 @@ public class MainLayout extends javax.swing.JFrame {
         );
 
         getContentPane().add(DashBoard, "card2");
-        DashBoard_Layout layout = new DashBoard_Layout();
+        DashBoard_layout layout = new DashBoard_layout();
         layout.run(DashBoard,getContentPane());
 
         ImageChooser.setLayout(new javax.swing.BoxLayout(ImageChooser, javax.swing.BoxLayout.Y_AXIS));
