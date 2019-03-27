@@ -5,21 +5,16 @@
  */
 package imagesecurity;
 
-import imagesecurity.ImageTotext.DashBoard_layout;
-import imagesecurity.ImageTotext.History_layout;
+import imagesecurity.ImageTotext.*;
 import java.awt.CardLayout;
-import imagesecurity.ImageTotext.ImageChooser_layout;
-import imagesecurity.ImageTotext.ImageConversion_layout;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import java.io.File;
-import java.awt.Image;
 import javax.imageio.ImageIO;
-import javax.swing.SwingConstants;
+import javax.swing.ImageIcon;
 /**
  *
  * @author Suman
@@ -55,6 +50,7 @@ public class MainLayout extends javax.swing.JFrame {
         file_history = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         file_exit = new javax.swing.JMenuItem();
+        back = new javax.swing.JMenuItem();
         Help = new javax.swing.JMenu();
         help_contents = new javax.swing.JMenuItem();
         help_report = new javax.swing.JMenuItem();
@@ -80,27 +76,21 @@ public class MainLayout extends javax.swing.JFrame {
         );
 
         getContentPane().add(DashBoard, "card2");
-        DashBoard_layout layout = new DashBoard_layout();
+        DashBoard_Layout layout = new DashBoard_Layout();
         layout.run(DashBoard,getContentPane());
 
-        ImageChooser.setLayout(new javax.swing.BoxLayout(ImageChooser, javax.swing.BoxLayout.X_AXIS));
+        ImageChooser.setLayout(new javax.swing.BoxLayout(ImageChooser, javax.swing.BoxLayout.Y_AXIS));
         getContentPane().add(ImageChooser, "card3");
         ImageChooser_layout IC_layout = new ImageChooser_layout();
         IC_layout.run(ImageChooser,getContentPane());
         ImageChooser.setBackground(new java.awt.Color(191, 181, 173));
 
-        javax.swing.GroupLayout ImageConversionLayout = new javax.swing.GroupLayout(ImageConversion);
-        ImageConversion.setLayout(ImageConversionLayout);
-        ImageConversionLayout.setHorizontalGroup(
-            ImageConversionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 955, Short.MAX_VALUE)
-        );
-        ImageConversionLayout.setVerticalGroup(
-            ImageConversionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 428, Short.MAX_VALUE)
-        );
-
+        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 20, 20);
+        flowLayout1.setAlignOnBaseline(true);
+        ImageConversion.setLayout(flowLayout1);
         getContentPane().add(ImageConversion, "card4");
+        //ImageConversion.setBackground(new java.awt.Color(191, 181, 173));
+
         ImageConversion_layout ICON_layout = new ImageConversion_layout();
         ICON_layout.run(ImageConversion, getContentPane());
 
@@ -139,7 +129,7 @@ public class MainLayout extends javax.swing.JFrame {
         file_new.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
         file_new.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         file_new.setText("New");
-        file_new.setPreferredSize(new java.awt.Dimension(119, 27));
+        file_new.setPreferredSize(new java.awt.Dimension(150, 27));
         file_new.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 file_newActionPerformed(evt);
@@ -160,6 +150,7 @@ public class MainLayout extends javax.swing.JFrame {
         file.add(file_history);
         file.add(jSeparator2);
 
+        file_exit.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_MASK));
         file_exit.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         file_exit.setText("Exit");
         file_exit.setPreferredSize(new java.awt.Dimension(119, 27));
@@ -169,6 +160,11 @@ public class MainLayout extends javax.swing.JFrame {
             }
         });
         file.add(file_exit);
+
+        back.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_LEFT, 0));
+        back.setText("Back");
+        back.setPreferredSize(new java.awt.Dimension(119, 27));
+        file.add(back);
 
         MenuBar.add(file);
 
@@ -257,6 +253,7 @@ public class MainLayout extends javax.swing.JFrame {
     private javax.swing.JPanel ImageConversion;
     private javax.swing.JMenuBar MenuBar;
     private javax.swing.JPanel ViewHistory;
+    private javax.swing.JMenuItem back;
     private javax.swing.JMenu file;
     private javax.swing.JMenuItem file_exit;
     private javax.swing.JMenuItem file_history;
