@@ -1,25 +1,25 @@
-package imagesecurity.ImageTotext;
-
-
-import java.awt.CardLayout;
-import java.awt.Container;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package imagesecurity.ImageTotext;
+
+import java.awt.CardLayout;
+import java.awt.Container;
+import javax.swing.*;
 
 /**
  *
  * @author Suman
  */
-public class DashBoard_layout {
-    
+public class DashBoard_layout  {
     private javax.swing.JButton RestoreImage;
     private javax.swing.JButton ImageToText;
     private javax.swing.JButton TextToImage;
-    public void run(javax.swing.JPanel DashBoard , Container container){
+    private JMenu menu1;
+
+    public void run(javax.swing.JPanel DashBoard,Container container){
         
         DashBoard.setBackground(new java.awt.Color(191, 181, 173));
         DashBoard.setLayout(null);
@@ -60,5 +60,9 @@ public class DashBoard_layout {
         });
         DashBoard.add(TextToImage);
         TextToImage.setBounds(490, 100, 280, 60);
+    
+       
     }
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // End of variables declaration//GEN-END:variables
 }
