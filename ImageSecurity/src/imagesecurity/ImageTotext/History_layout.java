@@ -24,8 +24,8 @@ import javax.swing.*;
  */
 public class History_layout {
     
-    private JPanel Security;
-    private JPanel Captcha_submit;
+    private JPanel Captcha_InnerPanel;
+    private JPanel Captcha_OuterPanel;
     
     public void run(javax.swing.JPanel Validate, Container container) 
     {
@@ -36,35 +36,35 @@ public class History_layout {
         ImageIcon icon;
         JButton Submit;
         
-        Captcha_submit = new JPanel();
-        Security = new JPanel();
+        Captcha_OuterPanel = new JPanel();
+        Captcha_InnerPanel = new JPanel();
         captchaImage = new JLabel();
         Refresh = new JButton();
         Enter_cap = new JTextField();
         Submit = new JButton();
         
-        Captcha_submit.setBackground(new java.awt.Color(209, 193, 180));
-        Captcha_submit.setPreferredSize(new java.awt.Dimension(300, 500));
-        Captcha_submit.setLayout(new javax.swing.BoxLayout(Captcha_submit, javax.swing.BoxLayout.Y_AXIS));
+        Captcha_OuterPanel.setBackground(new java.awt.Color(209, 193, 180));
+        Captcha_OuterPanel.setPreferredSize(new java.awt.Dimension(300, 500));
+        Captcha_OuterPanel.setLayout(new javax.swing.BoxLayout(Captcha_OuterPanel, javax.swing.BoxLayout.Y_AXIS));
 
-        Security.setBackground(new java.awt.Color(217, 186, 212));
-        Security.setMaximumSize(new java.awt.Dimension(550, 200));
-        Security.setPreferredSize(new java.awt.Dimension(100, 100));
-        Security.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 25));
+        Captcha_InnerPanel.setBackground(new java.awt.Color(209, 193, 180));
+        Captcha_InnerPanel.setMaximumSize(new java.awt.Dimension(550, 500));
+        Captcha_InnerPanel.setPreferredSize(new java.awt.Dimension(100, 100));
+        Captcha_InnerPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 25));
 
         captchaImage.setToolTipText("");
         captchaImage.setPreferredSize(new java.awt.Dimension(160, 100));
-        Security.add(captchaImage);
+        Captcha_InnerPanel.add(captchaImage);
         CaptchaImage obj = new CaptchaImage();
         BufferedImage image = obj.getCaptchaImage();
         //captchaImage.setPreferredSize(new java.awt.Dimension(300,300));
         icon = new ImageIcon(image);
         captchaImage.setIcon(icon);
-        Security.add(Refresh);
+        Captcha_InnerPanel.add(Refresh);
         BufferedImage refresh_btn;
         try{
             Refresh.setBounds(0,0,30,40);
-            File f = new File("./build/classes/imagesecurity/Icons/back.jpg");
+            File f = new File("./build/classes/imagesecurity/Icons/refresh.jpg");
             String path = f.getAbsoluteFile().toString();
             System.out.println(path);
             refresh_btn = ImageIO.read(f);
@@ -76,22 +76,18 @@ public class History_layout {
             e.printStackTrace();
         }
 
-        Enter_cap.setMargin(new java.awt.Insets(1, 4, 10, 4));
         Enter_cap.setPreferredSize(new java.awt.Dimension(250, 50));
-        Security.add(Enter_cap);
+        Captcha_InnerPanel.add(Enter_cap);
 
-        Captcha_submit.add(Security);
+        Captcha_OuterPanel.add(Captcha_InnerPanel);
 
         Submit.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Submit.setText("Submit");
-        Submit.setAutoscrolls(true);
-        Submit.setMaximumSize(new java.awt.Dimension(500, 50));
-        Submit.setMinimumSize(new java.awt.Dimension(300, 50));
-        Submit.setPreferredSize(new java.awt.Dimension(500, 50));
-        Captcha_submit.add(Submit);
+        Captcha_InnerPanel.add(Submit);
         Submit.setHorizontalAlignment(SwingConstants.CENTER);
+        Submit.setBorder(BorderFactory.createEmptyBorder(20, 50, 20, 50));
 
-        Validate.add(Captcha_submit);
+        Validate.add(Captcha_OuterPanel);
         Refresh.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

@@ -36,6 +36,8 @@ public class MainLayout extends javax.swing.JFrame {
         ImageConversion = new javax.swing.JPanel();
         CaptchaValidation = new javax.swing.JPanel();
         ViewHistory = new javax.swing.JPanel();
+        TextChooser = new javax.swing.JPanel();
+        TextConverter = new javax.swing.JPanel();
         MenuBar = new javax.swing.JMenuBar();
         file = new javax.swing.JMenu();
         file_new = new javax.swing.JMenuItem();
@@ -56,18 +58,6 @@ public class MainLayout extends javax.swing.JFrame {
         getContentPane().setLayout(new java.awt.CardLayout());
 
         DashBoard.setBackground(new java.awt.Color(191, 181, 173));
-
-        javax.swing.GroupLayout DashBoardLayout = new javax.swing.GroupLayout(DashBoard);
-        DashBoard.setLayout(DashBoardLayout);
-        DashBoardLayout.setHorizontalGroup(
-            DashBoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 955, Short.MAX_VALUE)
-        );
-        DashBoardLayout.setVerticalGroup(
-            DashBoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 428, Short.MAX_VALUE)
-        );
-
         getContentPane().add(DashBoard, "card2");
         DashBoard_layout layout = new DashBoard_layout();
         layout.run(DashBoard,getContentPane());
@@ -107,6 +97,32 @@ public class MainLayout extends javax.swing.JFrame {
         );
 
         getContentPane().add(ViewHistory, "card6");
+
+        javax.swing.GroupLayout TextChooserLayout = new javax.swing.GroupLayout(TextChooser);
+        TextChooser.setLayout(TextChooserLayout);
+        TextChooserLayout.setHorizontalGroup(
+            TextChooserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 955, Short.MAX_VALUE)
+        );
+        TextChooserLayout.setVerticalGroup(
+            TextChooserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 428, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(TextChooser, "card7");
+
+        javax.swing.GroupLayout TextConverterLayout = new javax.swing.GroupLayout(TextConverter);
+        TextConverter.setLayout(TextConverterLayout);
+        TextConverterLayout.setHorizontalGroup(
+            TextConverterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 955, Short.MAX_VALUE)
+        );
+        TextConverterLayout.setVerticalGroup(
+            TextConverterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 428, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(TextConverter, "card8");
 
         MenuBar.setBackground(new java.awt.Color(255, 0, 51));
         MenuBar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -245,6 +261,8 @@ public class MainLayout extends javax.swing.JFrame {
     private javax.swing.JPanel ImageChooser;
     private javax.swing.JPanel ImageConversion;
     private javax.swing.JMenuBar MenuBar;
+    private javax.swing.JPanel TextChooser;
+    private javax.swing.JPanel TextConverter;
     private javax.swing.JPanel ViewHistory;
     private javax.swing.JMenuItem back;
     private javax.swing.JMenu file;

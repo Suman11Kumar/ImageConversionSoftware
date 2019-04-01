@@ -13,11 +13,10 @@ import javax.swing.*;
  *
  * @author Suman
  */
-public class DashBoard_layout  {
+public class DashBoard_layout {
     private javax.swing.JButton RestoreImage;
     private javax.swing.JButton ImageToText;
     private javax.swing.JButton TextToImage;
-    private JMenu menu1;
 
     public void run(javax.swing.JPanel DashBoard,Container container){
         
@@ -36,7 +35,7 @@ public class DashBoard_layout  {
             }
         });
         DashBoard.add(RestoreImage);
-        RestoreImage.setBounds(310, 220, 280, 60);
+        RestoreImage.setBounds(250, 220, 280, 60);
 
         ImageToText.setBackground(new java.awt.Color(150, 145, 183));
         ImageToText.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -48,7 +47,7 @@ public class DashBoard_layout  {
             }
         });
         DashBoard.add(ImageToText);
-        ImageToText.setBounds(130, 100, 280, 60);
+        ImageToText.setBounds(70, 100, 280, 60);
 
         TextToImage.setBackground(new java.awt.Color(150, 145, 183));
         TextToImage.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -59,7 +58,7 @@ public class DashBoard_layout  {
             }
         });
         DashBoard.add(TextToImage);
-        TextToImage.setBounds(490, 100, 280, 60);
+        TextToImage.setBounds(440, 100, 280, 60);
     
        
     }
