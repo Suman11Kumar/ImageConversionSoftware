@@ -82,6 +82,8 @@ public class ImageConversion_layout {
         main.add(ImageStatus);
         ImageConversion.add(main);
         
+        main.setOpaque(true);
+        
     }
     
     private void Imagechoose()

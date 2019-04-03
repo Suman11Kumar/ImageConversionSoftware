@@ -106,6 +106,6 @@ public class History_layout {
             }
         });
         
-        
+        Captcha_OuterPanel.setOpaque(true);
     }
 }
