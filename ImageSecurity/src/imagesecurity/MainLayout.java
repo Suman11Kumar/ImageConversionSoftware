@@ -52,6 +52,7 @@ public class MainLayout extends javax.swing.JFrame {
         AboutUs = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(800, 500));
         setMinimumSize(new java.awt.Dimension(800, 500));
         setPreferredSize(new java.awt.Dimension(800, 500));
         setResizable(false);
@@ -68,9 +69,7 @@ public class MainLayout extends javax.swing.JFrame {
         IC_layout.run(ImageChooser,getContentPane());
         ImageChooser.setBackground(new java.awt.Color(191, 181, 173));
 
-        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 20, 20);
-        flowLayout1.setAlignOnBaseline(true);
-        ImageConversion.setLayout(flowLayout1);
+        ImageConversion.setLayout(new javax.swing.BoxLayout(ImageConversion, javax.swing.BoxLayout.Y_AXIS));
         getContentPane().add(ImageConversion, "card4");
         //ImageConversion.setBackground(new java.awt.Color(191, 181, 173));
 

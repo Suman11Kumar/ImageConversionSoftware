@@ -4,7 +4,12 @@
  * and open the template in the editor.
  */
 package imagesecurity;
-
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.io.File;
+import java.awt.Image;
+import javax.imageio.ImageIO;
+import javax.swing.*;
 /**
  *
  * @author Suman
@@ -27,78 +32,122 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        UserName = new javax.swing.JLabel();
-        Enter_Name = new javax.swing.JTextField();
-        Password = new javax.swing.JLabel();
-        Enter_Password = new javax.swing.JPasswordField();
-        SignIn = new javax.swing.JButton();
-        SignUp = new javax.swing.JLabel();
-        ForgotPassword = new javax.swing.JLabel();
+        LoginPanel = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jPasswordField1 = new javax.swing.JPasswordField();
+        jLabel3 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        background = new Background(new ImageIcon("/Users/Suman/Downloads/d173a05b65b249a3b9909fda944fac70.jpg").getImage());
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setLocation(new java.awt.Point(500, 500));
-        setLocationByPlatform(true);
-        setMinimumSize(new java.awt.Dimension(500, 400));
-        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(550, 300));
         setResizable(false);
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        UserName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        UserName.setText("UserName: ");
-        getContentPane().add(UserName);
-        UserName.setBounds(90, 20, 160, 80);
+        LoginPanel.setBackground(new java.awt.Color(153, 153, 153));
 
-        Enter_Name.setText("jTextField1");
-        Enter_Name.addActionListener(new java.awt.event.ActionListener() {
+        jLabel2.setFont(new java.awt.Font("Calisto MT", 0, 18)); // NOI18N
+        jLabel2.setText("Username: ");
+        jLabel2.setAutoscrolls(true);
+
+        jTextField1.setText("jTextField1");
+
+        jLabel1.setFont(new java.awt.Font("Calisto MT", 0, 18)); // NOI18N
+        jLabel1.setText("Password:");
+
+        jPasswordField1.setText("jPasswordField1");
+        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Enter_NameActionPerformed(evt);
+                jPasswordField1ActionPerformed(evt);
             }
         });
-        getContentPane().add(Enter_Name);
-        Enter_Name.setBounds(280, 40, 170, 40);
 
-        Password.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        Password.setText("Password: ");
-        getContentPane().add(Password);
-        Password.setBounds(90, 110, 140, 50);
+        jLabel3.setBackground(new java.awt.Color(0, 102, 204));
+        jLabel3.setFont(new java.awt.Font("Cambria Math", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 102, 204));
+        jLabel3.setText("Forgot Password?");
 
-        Enter_Password.setText("jPasswordField1");
-        Enter_Password.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Enter_PasswordActionPerformed(evt);
-            }
-        });
-        getContentPane().add(Enter_Password);
-        Enter_Password.setBounds(280, 110, 170, 40);
+        jButton1.setBackground(new java.awt.Color(153, 153, 153));
+        jButton1.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jButton1.setText("Submit");
 
-        SignIn.setBackground(new java.awt.Color(52, 164, 146));
-        SignIn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        SignIn.setText("Sign In");
-        getContentPane().add(SignIn);
-        SignIn.setBounds(320, 180, 140, 40);
+        jLabel4.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 102, 204));
+        jLabel4.setText("Don't Have an acoount? Sign Up");
 
-        SignUp.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        SignUp.setForeground(new java.awt.Color(0, 102, 204));
-        SignUp.setText("Forgot Password: ");
-        getContentPane().add(SignUp);
-        SignUp.setBounds(90, 180, 117, 22);
+        javax.swing.GroupLayout LoginPanelLayout = new javax.swing.GroupLayout(LoginPanel);
+        LoginPanel.setLayout(LoginPanelLayout);
+        LoginPanelLayout.setHorizontalGroup(
+            LoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(LoginPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(LoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginPanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(LoginPanelLayout.createSequentialGroup()
+                        .addGroup(LoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(LoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField1)
+                            .addComponent(jPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginPanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(LoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(82, 82, 82))
+        );
+        LoginPanelLayout.setVerticalGroup(
+            LoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(LoginPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(LoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(LoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+                    .addComponent(jPasswordField1))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(40, Short.MAX_VALUE))
+        );
 
-        ForgotPassword.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        ForgotPassword.setForeground(new java.awt.Color(0, 102, 204));
-        ForgotPassword.setText("Dont have an account? SignUp");
-        getContentPane().add(ForgotPassword);
-        ForgotPassword.setBounds(90, 210, 192, 17);
+        getContentPane().add(LoginPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 300));
+
+        background.setPreferredSize(new java.awt.Dimension(600, 400));
+
+        javax.swing.GroupLayout backgroundLayout = new javax.swing.GroupLayout(background);
+        background.setLayout(backgroundLayout);
+        backgroundLayout.setHorizontalGroup(
+            backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 570, Short.MAX_VALUE)
+        );
+        backgroundLayout.setVerticalGroup(
+            backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 360, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 570, 360));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Enter_PasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Enter_PasswordActionPerformed
+    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Enter_PasswordActionPerformed
-
-    private void Enter_NameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Enter_NameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Enter_NameActionPerformed
+    }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -136,12 +185,31 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Enter_Name;
-    private javax.swing.JPasswordField Enter_Password;
-    private javax.swing.JLabel ForgotPassword;
-    private javax.swing.JLabel Password;
-    private javax.swing.JButton SignIn;
-    private javax.swing.JLabel SignUp;
-    private javax.swing.JLabel UserName;
+    private javax.swing.JPanel LoginPanel;
+    private javax.swing.JPanel background;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+}
+
+class Background extends JPanel{
+    private Image img;
+    public Background(Image img){
+        this.img = img;
+        Dimension Size = new Dimension(img.getWidth(null), img.getHeight(null));
+        setPreferredSize(Size);
+        setMinimumSize(Size);
+        setMaximumSize(Size);
+        setSize(Size);
+        setLayout(null);
+    }
+    public void paintComponent(Graphics g){
+        g.drawImage(img, 0, 0, null);
+    }
+    
 }

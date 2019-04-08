@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -25,6 +25,7 @@ public class ImageConversion_layout {
     private javax.swing.JLabel ConversionStatus;
     private javax.swing.JButton SaveText;
     private javax.swing.JLabel name;
+    private javax.swing.JButton convert;
     private String path;
     public void run(javax.swing.JPanel ImageConversion, Container container)
     {
@@ -36,11 +37,12 @@ public class ImageConversion_layout {
         ImageStatus = new javax.swing.JPanel();
         ProgressBar = new javax.swing.JProgressBar();
         ConversionStatus = new javax.swing.JLabel();
+        convert = new javax.swing.JButton();
         name = new javax.swing.JLabel();
         
         main.setLayout(new javax.swing.BoxLayout(main, javax.swing.BoxLayout.X_AXIS));
-        main.setPreferredSize(new java.awt.Dimension(500, 300));
-                
+        main.setMaximumSize(new java.awt.Dimension(500, 300));
+        //main.setMaximumSize(maximumSize);
         ImageLoad.setPreferredSize(new java.awt.Dimension(350, 320));
         ImageLoad.setVerifyInputWhenFocusTarget(false);
         ImageLoad.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -58,10 +60,10 @@ public class ImageConversion_layout {
         name.setBorder(BorderFactory.createEmptyBorder(20,0,30,0));
         
         ProgressBar.setBackground(new java.awt.Color(153, 153, 0));
-        ProgressBar.setMaximumSize(new java.awt.Dimension(32767, 75));
-        ProgressBar.setMinimumSize(new java.awt.Dimension(10, 75));
-        ProgressBar.setPreferredSize(new java.awt.Dimension(146, 75));
-        ProgressBar.setUI(new ProgressCircleUI());
+        ProgressBar.setMaximumSize(new java.awt.Dimension(32767, 50));
+        ProgressBar.setMinimumSize(new java.awt.Dimension(10, 50));
+        ProgressBar.setPreferredSize(new java.awt.Dimension(146, 50));
+        
         ImageStatus.add(ProgressBar);
 
         ConversionStatus.setBackground(new java.awt.Color(51, 255, 51));
@@ -74,14 +76,18 @@ public class ImageConversion_layout {
         ImageStatus.add(ConversionStatus);
         ImageStatus.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
         
+        convert.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        convert.setText("Convert");
+        convert.setMargin(new java.awt.Insets(10, 50, 10, 50));
+        ImageStatus.add(convert);
+        
         SaveText.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         SaveText.setText("Save Text File");
         SaveText.setMargin(new java.awt.Insets(10, 50, 10, 50));
-        ImageStatus.add(SaveText);
-        
+        SaveText.setHorizontalAlignment(SwingConstants.CENTER);
         main.add(ImageStatus);
         ImageConversion.add(main);
-        
+        ImageConversion.add(SaveText);
         main.setOpaque(true);
         
     }
