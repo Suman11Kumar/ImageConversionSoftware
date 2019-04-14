@@ -36,16 +36,15 @@ public class MainLayout extends javax.swing.JFrame {
         ImageChooser = new javax.swing.JPanel();
         ImageConversion = new javax.swing.JPanel();
         CaptchaValidation = new javax.swing.JPanel();
-//        jPanel2 = new javax.swing.JPanel();
+      //  jPanel2 = new javax.swing.JPanel();
         ViewHistory = new javax.swing.JPanel();
-  //      jPanel1 = new javax.swing.JPanel();
-    //    jScrollPane1 = new javax.swing.JScrollPane();
-      //  jTable1 = new javax.swing.JTable();
+      //  jPanel1 = new javax.swing.JPanel();
+ //       jScrollPane1 = new javax.swing.JScrollPane();
+   //     jTable1 = new javax.swing.JTable();
  //       jPanel3 = new javax.swing.JPanel();
    //     jPanel5 = new javax.swing.JPanel();
- //       image =new ImageIcon("C:\\Users\\max\\Desktop\\max.jpg");
-   //     jLabel1 = new javax.swing.JLabel(image);
-  //      jButton2 = new javax.swing.JButton();
+  //      jLabel1 = new javax.swing.JLabel();
+   //     jButton2 = new javax.swing.JButton();
         TextChooser = new javax.swing.JPanel();
         TextConverter = new javax.swing.JPanel();
         MenuBar = new javax.swing.JMenuBar();
@@ -92,7 +91,7 @@ public class MainLayout extends javax.swing.JFrame {
         History_layout HLayout = new History_layout();
         HLayout.run(CaptchaValidation,getContentPane());
 
-    /*    javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+      /*  javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,8 +107,12 @@ public class MainLayout extends javax.swing.JFrame {
         ViewHistory.setBackground(new java.awt.Color(191, 181, 173));
         ViewHistory.setLayout(new java.awt.GridLayout(1, 2, 2, 0));
 
-       /* jTable1.setModel(new javax.swing.table.DefaultTableModel(
+  /*      jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {"image1.jpg"},
+                {"image2.jpg"},
+                {"image3.jpg"},
+                {"image4.jpg"},
                 {null},
                 {null},
                 {null},
@@ -118,13 +121,10 @@ public class MainLayout extends javax.swing.JFrame {
             new String [] {
                 "Image Detail"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+        ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(jTable1);
@@ -176,7 +176,7 @@ public class MainLayout extends javax.swing.JFrame {
 */
         getContentPane().add(ViewHistory, "card6");
         tableimage i=new tableimage();
-        i.run(ViewHistory,getContentPane());
+          i.run(ViewHistory,getContentPane());
 
         javax.swing.GroupLayout TextChooserLayout = new javax.swing.GroupLayout(TextChooser);
         TextChooser.setLayout(TextChooserLayout);
@@ -296,6 +296,13 @@ public class MainLayout extends javax.swing.JFrame {
     private void file_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_file_exitActionPerformed
         System.exit(0);
     }//GEN-LAST:event_file_exitActionPerformed
+
+  /*  private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+       int row=jTable1.getSelectedRow();
+       String t=jTable1.getModel().getValueAt(row,0).toString();
+       image=new ImageIcon("C:\\Users\\max\\Documents\\NetBeansProjects\\ImageConversionSoftware\\ImageSecurity\\"+t);
+       jLabel1.setIcon(image);
+    }//GEN-LAST:event_jTable1MouseClicked*/
 
     /**
      * @param args the command line arguments

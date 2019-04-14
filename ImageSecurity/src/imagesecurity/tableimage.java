@@ -31,8 +31,8 @@ public class tableimage {
         jTable1 = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
-        image =new ImageIcon("C:\\Users\\max\\Desktop\\max.jpg");
-        jLabel1 = new javax.swing.JLabel(image);
+       // image =new ImageIcon("C:\\Users\\max\\Desktop\\max.jpg");
+        jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         
         
@@ -52,10 +52,10 @@ public class tableimage {
         
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
+                {"image1.jpg"},
+                {"image2.jpg"},
+                {"image3.jpg"},
+                {"image4.jpg"}
             },
             new String [] {
                 "Image Detail"
@@ -67,6 +67,11 @@ public class tableimage {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(jTable1);
@@ -120,7 +125,12 @@ public class tableimage {
         
         
     }
-    
+     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {                                     
+       int row=jTable1.getSelectedRow();
+       String t=jTable1.getModel().getValueAt(row,0).toString();
+       image=new ImageIcon("C:\\Users\\max\\Documents\\NetBeansProjects\\ImageConversionSoftware\\ImageSecurity\\"+t);
+       jLabel1.setIcon(image);
+    }                  
     
     
 }
