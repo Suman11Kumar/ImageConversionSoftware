@@ -125,7 +125,7 @@ public class Login extends javax.swing.JFrame {
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
-        getContentPane().add(LoginPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 300));
+        getContentPane().add(LoginPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 300));
 
         background.setPreferredSize(new java.awt.Dimension(600, 400));
 
