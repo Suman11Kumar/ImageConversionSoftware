@@ -5,6 +5,7 @@
  */
 package imagesecurity.ImageTotext;
 
+import imagesecurity.Global;
 import java.awt.Container;
 import java.awt.Image;
 import java.io.File;
@@ -53,12 +54,14 @@ public class ImageConversion_layout {
 
         name.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         // Code adding the component to the parent container - not shown here
-        int index = path.lastIndexOf('\\');
-        path = path.substring(index+1);
-        name.setText(path);
+        if(path != null){
+            int index = path.lastIndexOf('\\');
+            path = path.substring(index+1);
+            name.setText(path);
+        }
         ImageStatus.add(name);
         name.setBorder(BorderFactory.createEmptyBorder(20,0,30,0));
-        
+                
         ProgressBar.setBackground(new java.awt.Color(153, 153, 0));
         ProgressBar.setMaximumSize(new java.awt.Dimension(32767, 50));
         ProgressBar.setMinimumSize(new java.awt.Dimension(10, 50));
@@ -94,15 +97,18 @@ public class ImageConversion_layout {
     
     private void Imagechoose()
     {
+        Global tmp = Global.getInstance();
+        path = tmp.getImageFile();
         ImageLoad.setSize(new java.awt.Dimension(219, 236));
         try
         {
-            File file = new File("/Users/Suman/Downloads/suman.jpg");
-            path = file.getAbsolutePath();
-            Image image = ImageIO.read(file);
-            Image scaledInstance = image.getScaledInstance(ImageLoad.getWidth(), ImageLoad.getHeight(), Image.SCALE_SMOOTH);
-            ImageIcon img = new ImageIcon(scaledInstance);
-            ImageLoad.setIcon(img);
+            if(path != null){
+                File file = new File(path);
+                Image image = ImageIO.read(file);
+                Image scaledInstance = image.getScaledInstance(ImageLoad.getWidth(), ImageLoad.getHeight(), Image.SCALE_SMOOTH);
+                ImageIcon img = new ImageIcon(scaledInstance);
+                ImageLoad.setIcon(img);
+            }
         }
         catch(Exception e)
         {
