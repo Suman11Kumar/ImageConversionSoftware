@@ -7,6 +7,9 @@ package imagesecurity;
 
 import imagesecurity.ImageTotext.*;
 import java.awt.CardLayout;
+import java.awt.Component;
+import java.awt.Container;
+import javax.swing.*;
 
 /**
  *
@@ -62,12 +65,14 @@ public class MainLayout extends javax.swing.JFrame {
         getContentPane().add(DashBoard, "card2");
         DashBoard_layout layout = new DashBoard_layout();
         layout.run(DashBoard,getContentPane());
+        DashBoard.setName("1");
 
         ImageChooser.setLayout(new javax.swing.BoxLayout(ImageChooser, javax.swing.BoxLayout.Y_AXIS));
         getContentPane().add(ImageChooser, "card3");
         ImageChooser_layout IC_layout = new ImageChooser_layout();
         IC_layout.run(ImageChooser,getContentPane());
         ImageChooser.setBackground(new java.awt.Color(191, 181, 173));
+        ImageChooser.setName("2");
 
         ImageConversion.setLayout(new javax.swing.BoxLayout(ImageConversion, javax.swing.BoxLayout.Y_AXIS));
         getContentPane().add(ImageConversion, "card4");
@@ -75,12 +80,14 @@ public class MainLayout extends javax.swing.JFrame {
 
         ImageConversion_layout ICON_layout = new ImageConversion_layout();
         ICON_layout.run(ImageConversion, getContentPane());
+        ImageConversion.setName("3");
 
         CaptchaValidation.setBackground(new java.awt.Color(191, 181, 173));
         CaptchaValidation.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 100, 100));
         getContentPane().add(CaptchaValidation, "card5");
         History_layout HLayout = new History_layout();
         HLayout.run(CaptchaValidation,getContentPane());
+        CaptchaValidation.setName("4");
 
         ViewHistory.setBackground(new java.awt.Color(191, 181, 173));
 
@@ -96,6 +103,7 @@ public class MainLayout extends javax.swing.JFrame {
         );
 
         getContentPane().add(ViewHistory, "card6");
+        ViewHistory.setName("5");
 
         javax.swing.GroupLayout TextChooserLayout = new javax.swing.GroupLayout(TextChooser);
         TextChooser.setLayout(TextChooserLayout);
@@ -109,6 +117,7 @@ public class MainLayout extends javax.swing.JFrame {
         );
 
         getContentPane().add(TextChooser, "card7");
+        TextChooser.setName("6");
 
         javax.swing.GroupLayout TextConverterLayout = new javax.swing.GroupLayout(TextConverter);
         TextConverter.setLayout(TextConverterLayout);
@@ -122,6 +131,7 @@ public class MainLayout extends javax.swing.JFrame {
         );
 
         getContentPane().add(TextConverter, "card8");
+        TextConverter.setName("7");
 
         MenuBar.setBackground(new java.awt.Color(255, 0, 51));
         MenuBar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -172,6 +182,11 @@ public class MainLayout extends javax.swing.JFrame {
         back.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_LEFT, 0));
         back.setText("Back");
         back.setPreferredSize(new java.awt.Dimension(119, 27));
+        back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backActionPerformed(evt);
+            }
+        });
         file.add(back);
 
         MenuBar.add(file);
@@ -216,12 +231,46 @@ public class MainLayout extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_file_exitActionPerformed
 
+    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
+        Container container = getContentPane();
+        JPanel card = null;
+        CardLayout  layout = (CardLayout) container.getLayout();;
+        for(Component comp : container.getComponents())
+        {
+            card = (JPanel) comp;
+            if(card.isVisible() == true){
+                if(card.getName().equals("1"))
+                    System.exit(0);
+                else 
+                if(card.getName().equals("2")){
+                    layout.show(container, "card2");
+                }
+                else
+                if(card.getName().equals("3")){
+                    layout.show(container, "card3");
+                }
+                else
+                if(card.getName().equals("4"))
+                    layout.show(container, "card2");
+                else
+                if(card.getName().equals("5"))
+                    layout.show(container, "card2");
+                else
+                if(card.getName().equals("6"))
+                    layout.show(container, "card2");
+                else
+                if(card.getName().equals("7"))
+                    layout.show(container, "card2");
+            }
+        }
+    }//GEN-LAST:event_backActionPerformed
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+    //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */

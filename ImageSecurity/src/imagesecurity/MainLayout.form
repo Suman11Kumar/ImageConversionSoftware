@@ -101,6 +101,9 @@
                   <Dimension value="[119, 27]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -193,7 +196,7 @@
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="DashBoard_layout layout = new DashBoard_layout();&#xa;layout.run(DashBoard,getContentPane());"/>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="DashBoard_layout layout = new DashBoard_layout();&#xa;layout.run(DashBoard,getContentPane());&#xa;DashBoard.setName(&quot;1&quot;);"/>
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JPanel()"/>
       </AuxValues>
       <Constraints>
@@ -206,7 +209,7 @@
     </Container>
     <Container class="javax.swing.JPanel" name="ImageChooser">
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="ImageChooser_layout IC_layout = new ImageChooser_layout();&#xa;IC_layout.run(ImageChooser,getContentPane());&#xa;ImageChooser.setBackground(new java.awt.Color(191, 181, 173));"/>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="ImageChooser_layout IC_layout = new ImageChooser_layout();&#xa;IC_layout.run(ImageChooser,getContentPane());&#xa;ImageChooser.setBackground(new java.awt.Color(191, 181, 173));&#xa;ImageChooser.setName(&quot;2&quot;);"/>
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
@@ -220,7 +223,7 @@
     </Container>
     <Container class="javax.swing.JPanel" name="ImageConversion">
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="//ImageConversion.setBackground(new java.awt.Color(191, 181, 173));&#xa;&#xa;ImageConversion_layout ICON_layout = new ImageConversion_layout();&#xa;ICON_layout.run(ImageConversion, getContentPane());"/>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="//ImageConversion.setBackground(new java.awt.Color(191, 181, 173));&#xa;&#xa;ImageConversion_layout ICON_layout = new ImageConversion_layout();&#xa;ICON_layout.run(ImageConversion, getContentPane());&#xa;ImageConversion.setName(&quot;3&quot;);"/>
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
@@ -239,7 +242,7 @@
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="History_layout HLayout = new History_layout();&#xa;HLayout.run(CaptchaValidation,getContentPane());"/>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="History_layout HLayout = new History_layout();&#xa;HLayout.run(CaptchaValidation,getContentPane());&#xa;CaptchaValidation.setName(&quot;4&quot;);"/>
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
@@ -258,6 +261,9 @@
           <Color blue="ad" green="b5" red="bf" type="rgb"/>
         </Property>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="ViewHistory.setName(&quot;5&quot;);"/>
+      </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
           <CardConstraints cardName="card6"/>
@@ -278,6 +284,9 @@
       </Layout>
     </Container>
     <Container class="javax.swing.JPanel" name="TextChooser">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="TextChooser.setName(&quot;6&quot;);"/>
+      </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
           <CardConstraints cardName="card7"/>
@@ -298,6 +307,9 @@
       </Layout>
     </Container>
     <Container class="javax.swing.JPanel" name="TextConverter">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="TextConverter.setName(&quot;7&quot;);"/>
+      </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
           <CardConstraints cardName="card8"/>

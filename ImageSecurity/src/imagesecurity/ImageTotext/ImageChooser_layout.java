@@ -5,12 +5,13 @@
  */
 
 package imagesecurity.ImageTotext;
+import imagesecurity.Global;
 import imagesecurity.camera;
 import java.awt.Container;
 import java.awt.CardLayout;
 import java.awt.FlowLayout;
+import java.io.File;
 import javax.swing.JFileChooser;
-import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 /**
  *
@@ -27,6 +28,7 @@ public class ImageChooser_layout {
     private javax.swing.JPanel camera;
     private javax.swing.JPanel browse;
     private javax.swing.JPanel Next;
+    
     public void run(javax.swing.JPanel ImageChooser,Container container)
     {
         choose = new javax.swing.JPanel();
@@ -79,8 +81,12 @@ public class ImageChooser_layout {
         browse_btn.setPreferredSize(new java.awt.Dimension(200, 50));
         browse_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
+                
                 JFileChooser file=new JFileChooser();
-                    int fc=file.showOpenDialog(null);
+                int fc=file.showOpenDialog(null);
+                File f = file.getSelectedFile();
+                Global tmp = Global.getInstance();
+                tmp.setImageFile(f);
             }
         });
         browse.setPreferredSize(new java.awt.Dimension(200,choose.getHeight()));
@@ -101,6 +107,7 @@ public class ImageChooser_layout {
         nextButton.setVerticalAlignment(SwingConstants.CENTER);
         nextButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
+                
                 CardLayout card = (CardLayout) container.getLayout();
                 card.show(container,"card4");
             }
