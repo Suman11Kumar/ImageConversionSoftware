@@ -9,7 +9,8 @@ import imagesecurity.ImageTotext.*;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.awt.Container;
-import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 
 /**
  *
@@ -38,15 +39,8 @@ public class MainLayout extends javax.swing.JFrame {
         ImageChooser = new javax.swing.JPanel();
         ImageConversion = new javax.swing.JPanel();
         CaptchaValidation = new javax.swing.JPanel();
-      //  jPanel2 = new javax.swing.JPanel();
         ViewHistory = new javax.swing.JPanel();
-      //  jPanel1 = new javax.swing.JPanel();
- //       jScrollPane1 = new javax.swing.JScrollPane();
-   //     jTable1 = new javax.swing.JTable();
- //       jPanel3 = new javax.swing.JPanel();
-   //     jPanel5 = new javax.swing.JPanel();
-  //      jLabel1 = new javax.swing.JLabel();
-   //     jButton2 = new javax.swing.JButton();
+
         TextChooser = new javax.swing.JPanel();
         TextConverter = new javax.swing.JPanel();
         MenuBar = new javax.swing.JMenuBar();
@@ -73,14 +67,12 @@ public class MainLayout extends javax.swing.JFrame {
         getContentPane().add(DashBoard, "card2");
         DashBoard_layout layout = new DashBoard_layout();
         layout.run(DashBoard,getContentPane());
-        DashBoard.setName("1");
 
         ImageChooser.setLayout(new javax.swing.BoxLayout(ImageChooser, javax.swing.BoxLayout.Y_AXIS));
         getContentPane().add(ImageChooser, "card3");
         ImageChooser_layout IC_layout = new ImageChooser_layout();
         IC_layout.run(ImageChooser,getContentPane());
         ImageChooser.setBackground(new java.awt.Color(191, 181, 173));
-        ImageChooser.setName("2");
 
         ImageConversion.setLayout(new javax.swing.BoxLayout(ImageConversion, javax.swing.BoxLayout.Y_AXIS));
         getContentPane().add(ImageConversion, "card4");
@@ -88,98 +80,18 @@ public class MainLayout extends javax.swing.JFrame {
 
         ImageConversion_layout ICON_layout = new ImageConversion_layout();
         ICON_layout.run(ImageConversion, getContentPane());
-        ImageConversion.setName("3");
 
         CaptchaValidation.setBackground(new java.awt.Color(191, 181, 173));
         CaptchaValidation.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 100, 100));
         getContentPane().add(CaptchaValidation, "card5");
         History_layout HLayout = new History_layout();
         HLayout.run(CaptchaValidation,getContentPane());
-        CaptchaValidation.setName("4");
 
-      /*  javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 994, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 449, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(jPanel2, "card9");*/
 
         ViewHistory.setBackground(new java.awt.Color(191, 181, 173));
         ViewHistory.setLayout(new java.awt.GridLayout(1, 2, 2, 0));
 
-  /*      jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"image1.jpg"},
-                {"image2.jpg"},
-                {"image3.jpg"},
-                {"image4.jpg"},
-                {null},
-                {null},
-                {null},
-                {null}
-            },
-            new String [] {
-                "Image Detail"
-            }
-        ));
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(jTable1);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        ViewHistory.add(jPanel1);
-
-        jPanel3.setLayout(new java.awt.BorderLayout());
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 467, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(82, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60))
-        );
-
-        jPanel3.add(jPanel5, java.awt.BorderLayout.CENTER);
-
-        jButton2.setText("Restore Image");
-        jPanel3.add(jButton2, java.awt.BorderLayout.PAGE_END);
-
-        ViewHistory.add(jPanel3);
-*/
         getContentPane().add(ViewHistory, "card6");
         tableimage i=new tableimage();
           i.run(ViewHistory,getContentPane());
@@ -196,7 +108,6 @@ public class MainLayout extends javax.swing.JFrame {
         );
 
         getContentPane().add(TextChooser, "card7");
-        TextChooser.setName("6");
 
         javax.swing.GroupLayout TextConverterLayout = new javax.swing.GroupLayout(TextConverter);
         TextConverter.setLayout(TextConverterLayout);
@@ -210,7 +121,6 @@ public class MainLayout extends javax.swing.JFrame {
         );
 
         getContentPane().add(TextConverter, "card8");
-        TextConverter.setName("7");
 
         MenuBar.setBackground(new java.awt.Color(255, 0, 51));
         MenuBar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -261,11 +171,6 @@ public class MainLayout extends javax.swing.JFrame {
         back.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_LEFT, 0));
         back.setText("Back");
         back.setPreferredSize(new java.awt.Dimension(119, 27));
-        back.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backActionPerformed(evt);
-            }
-        });
         file.add(back);
 
         MenuBar.add(file);
@@ -310,10 +215,10 @@ public class MainLayout extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_file_exitActionPerformed
 
-    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
+   private void backActionPerformed(java.awt.event.ActionEvent evt) {
         Container container = getContentPane();
         JPanel card = null;
-        CardLayout  layout = (CardLayout) container.getLayout();;
+        CardLayout  layout = (CardLayout) container.getLayout();
         for(Component comp : container.getComponents())
         {
             card = (JPanel) comp;
@@ -342,16 +247,10 @@ public class MainLayout extends javax.swing.JFrame {
                     layout.show(container, "card2");
             }
         }
-    }//GEN-LAST:event_backActionPerformed
-
-    
-    
-    /**
-     * @param args the command line arguments
-     */
+    }                                       
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-    //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */

@@ -209,7 +209,7 @@
     </Container>
     <Container class="javax.swing.JPanel" name="ImageChooser">
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="ImageChooser_layout IC_layout = new ImageChooser_layout();&#xa;IC_layout.run(ImageChooser,getContentPane());&#xa;ImageChooser.setBackground(new java.awt.Color(191, 181, 173));&#xa;ImageChooser.setName(&quot;2&quot;);"/>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="ImageChooser.setBackground(new java.awt.Color(191, 181, 173));&#xa;ImageChooser.setName(&quot;2&quot;);&#xa;ImageChooser_layout ic_layout = new ImageChooser_layout();&#xa;ic_layout.run(ImageChooser, getContentPane());"/>
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">

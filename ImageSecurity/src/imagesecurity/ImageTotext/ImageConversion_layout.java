@@ -12,6 +12,7 @@ import java.io.File;
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 
 /**
@@ -99,6 +100,7 @@ public class ImageConversion_layout {
     {
         Global tmp = Global.getInstance();
         path = tmp.getImageFile();
+        System.out.println(path);
         ImageLoad.setSize(new java.awt.Dimension(219, 236));
         try
         {

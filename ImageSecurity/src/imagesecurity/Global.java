@@ -13,8 +13,8 @@ import java.io.File;
  */
 public class Global {
     private static Global object = new Global();
-    private String ImagePath = null;
-    private String TextPath = null;
+    private static String ImagePath = null;
+    private static String TextPath = null;
     
     private Global(){
     }
