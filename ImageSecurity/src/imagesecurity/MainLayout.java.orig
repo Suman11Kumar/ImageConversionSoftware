@@ -9,8 +9,12 @@ import imagesecurity.ImageTotext.*;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.awt.Container;
+<<<<<<< HEAD
 import javax.swing.*;
+=======
 import javax.swing.ImageIcon;
+import javax.swing.JPanel;
+>>>>>>> tmp
 
 /**
  *
@@ -40,6 +44,7 @@ public class MainLayout extends javax.swing.JFrame {
         ImageConversion = new javax.swing.JPanel();
         CaptchaValidation = new javax.swing.JPanel();
         ViewHistory = new javax.swing.JPanel();
+
         TextChooser = new javax.swing.JPanel();
         TextConverter = new javax.swing.JPanel();
         MenuBar = new javax.swing.JMenuBar();
@@ -63,9 +68,6 @@ public class MainLayout extends javax.swing.JFrame {
         getContentPane().setLayout(new java.awt.CardLayout());
 
         DashBoard.setBackground(new java.awt.Color(191, 181, 173));
-        DashBoard.setMaximumSize(new java.awt.Dimension(700, 500));
-        DashBoard.setMinimumSize(new java.awt.Dimension(700, 500));
-        DashBoard.setPreferredSize(new java.awt.Dimension(700, 500));
         getContentPane().add(DashBoard, "card2");
         DashBoard_layout layout = new DashBoard_layout();
         layout.run(DashBoard,getContentPane());
@@ -73,10 +75,10 @@ public class MainLayout extends javax.swing.JFrame {
 
         ImageChooser.setLayout(new javax.swing.BoxLayout(ImageChooser, javax.swing.BoxLayout.Y_AXIS));
         getContentPane().add(ImageChooser, "card3");
+        ImageChooser_layout IC_layout = new ImageChooser_layout();
+        IC_layout.run(ImageChooser,getContentPane());
         ImageChooser.setBackground(new java.awt.Color(191, 181, 173));
         ImageChooser.setName("2");
-        ImageChooser_layout ic_layout = new ImageChooser_layout();
-        ic_layout.run(ImageChooser, getContentPane());
 
         ImageConversion.setLayout(new javax.swing.BoxLayout(ImageConversion, javax.swing.BoxLayout.Y_AXIS));
         getContentPane().add(ImageConversion, "card4");
@@ -93,12 +95,18 @@ public class MainLayout extends javax.swing.JFrame {
         HLayout.run(CaptchaValidation,getContentPane());
         CaptchaValidation.setName("4");
 
+
         ViewHistory.setBackground(new java.awt.Color(191, 181, 173));
         ViewHistory.setLayout(new java.awt.GridLayout(1, 2, 2, 0));
+
+
         getContentPane().add(ViewHistory, "card6");
+<<<<<<< HEAD
         ViewHistory.setName("5");
-        tableimage i = new tableimage();
-        i.run(ViewHistory, getContentPane());
+=======
+        tableimage i=new tableimage();
+          i.run(ViewHistory,getContentPane());
+>>>>>>> tmp
 
         javax.swing.GroupLayout TextChooserLayout = new javax.swing.GroupLayout(TextChooser);
         TextChooser.setLayout(TextChooserLayout);
@@ -108,7 +116,7 @@ public class MainLayout extends javax.swing.JFrame {
         );
         TextChooserLayout.setVerticalGroup(
             TextChooserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGap(0, 449, Short.MAX_VALUE)
         );
 
         getContentPane().add(TextChooser, "card7");
@@ -122,7 +130,7 @@ public class MainLayout extends javax.swing.JFrame {
         );
         TextConverterLayout.setVerticalGroup(
             TextConverterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGap(0, 449, Short.MAX_VALUE)
         );
 
         getContentPane().add(TextConverter, "card8");
@@ -226,11 +234,17 @@ public class MainLayout extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_file_exitActionPerformed
 
-    private void backActionPerformed(java.awt.event.ActionEvent evt) {                                     
+<<<<<<< HEAD
+    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         Container container = getContentPane();
         JPanel card = null;
         CardLayout  layout = (CardLayout) container.getLayout();;
-
+=======
+   private void backActionPerformed(java.awt.event.ActionEvent evt) {
+        Container container = getContentPane();
+        JPanel card = null;
+        CardLayout  layout = (CardLayout) container.getLayout();
+>>>>>>> tmp
         for(Component comp : container.getComponents())
         {
             card = (JPanel) comp;
@@ -259,8 +273,15 @@ public class MainLayout extends javax.swing.JFrame {
                     layout.show(container, "card2");
             }
         }
-    }
+<<<<<<< HEAD
+    }//GEN-LAST:event_backActionPerformed
 
+    /**
+     * @param args the command line arguments
+     */
+=======
+    }                                       
+>>>>>>> tmp
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
     //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -312,8 +333,17 @@ public class MainLayout extends javax.swing.JFrame {
     private javax.swing.JMenuItem file_new;
     private javax.swing.JMenuItem help_contents;
     private javax.swing.JMenuItem help_report;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JTable jTable1;
+    private ImageIcon image;
     // End of variables declaration//GEN-END:variables
 
 }
