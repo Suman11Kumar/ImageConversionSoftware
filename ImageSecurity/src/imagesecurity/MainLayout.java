@@ -10,6 +10,7 @@ import java.awt.CardLayout;
 import java.awt.Component;
 import java.awt.Container;
 import javax.swing.*;
+imort javax.swing.ImageIcon;
 
 /**
  *
@@ -39,6 +40,7 @@ public class MainLayout extends javax.swing.JFrame {
         ImageConversion = new javax.swing.JPanel();
         CaptchaValidation = new javax.swing.JPanel();
         ViewHistory = new javax.swing.JPanel();
+
         TextChooser = new javax.swing.JPanel();
         TextConverter = new javax.swing.JPanel();
         MenuBar = new javax.swing.JMenuBar();
@@ -89,21 +91,11 @@ public class MainLayout extends javax.swing.JFrame {
         HLayout.run(CaptchaValidation,getContentPane());
         CaptchaValidation.setName("4");
 
+
         ViewHistory.setBackground(new java.awt.Color(191, 181, 173));
 
-        javax.swing.GroupLayout ViewHistoryLayout = new javax.swing.GroupLayout(ViewHistory);
-        ViewHistory.setLayout(ViewHistoryLayout);
-        ViewHistoryLayout.setHorizontalGroup(
-            ViewHistoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 955, Short.MAX_VALUE)
-        );
-        ViewHistoryLayout.setVerticalGroup(
-            ViewHistoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 428, Short.MAX_VALUE)
-        );
-
         getContentPane().add(ViewHistory, "card6");
-        ViewHistory.setName("5");
+        ViewHistory.setNAme("5");
 
         javax.swing.GroupLayout TextChooserLayout = new javax.swing.GroupLayout(TextChooser);
         TextChooser.setLayout(TextChooserLayout);
@@ -235,6 +227,7 @@ public class MainLayout extends javax.swing.JFrame {
         Container container = getContentPane();
         JPanel card = null;
         CardLayout  layout = (CardLayout) container.getLayout();;
+
         for(Component comp : container.getComponents())
         {
             card = (JPanel) comp;
@@ -263,11 +256,8 @@ public class MainLayout extends javax.swing.JFrame {
                     layout.show(container, "card2");
             }
         }
-    }//GEN-LAST:event_backActionPerformed
+    }
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
     //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

@@ -15,7 +15,7 @@ public class Global {
     private static Global object = new Global();
     private String ImagePath = null;
     private String TextPath = null;
-    
+
     private Global(){
     }
     

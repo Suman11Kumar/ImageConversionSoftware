@@ -12,11 +12,8 @@ import java.awt.CardLayout;
 import java.awt.FlowLayout;
 import java.io.File;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
-/**
- *
- * @author Suman
- */
 public class ImageChooser_layout {
     
     private javax.swing.JButton camera_btn;
@@ -89,6 +86,7 @@ public class ImageChooser_layout {
                 tmp.setImageFile(f);
             }
         });
+        
         browse.setPreferredSize(new java.awt.Dimension(200,choose.getHeight()));
         browse.add(browse_lbl);
         browse.add(browse_btn);
@@ -110,6 +108,15 @@ public class ImageChooser_layout {
                 
                 CardLayout card = (CardLayout) container.getLayout();
                 card.show(container,"card4");
+                Thread t = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        CardLayout card = (CardLayout) container.getLayout();
+                        card.show(container,"card4");//To change body of generated methods, choose Tools | Templates.
+                        System.out.println("Thread is running");
+                    }
+                });
+                t.start();
             }
         });
         Next.add(nextButton);
