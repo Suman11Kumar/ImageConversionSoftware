@@ -54,7 +54,8 @@ public class DashBoard_layout {
         TextToImage.setText("Text Converter");
         TextToImage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                
+                CardLayout card = (CardLayout) container.getLayout();
+                card.show(container, "card8");
             }
         });
         DashBoard.add(TextToImage);

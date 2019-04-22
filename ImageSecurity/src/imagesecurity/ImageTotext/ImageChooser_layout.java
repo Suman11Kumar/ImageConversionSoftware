@@ -80,10 +80,13 @@ public class ImageChooser_layout {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 
                 JFileChooser file=new JFileChooser();
-                int fc=file.showOpenDialog(null);
+                int fc = file.showOpenDialog(null);
                 File f = file.getSelectedFile();
-                Global tmp = Global.getInstance();
-                tmp.setImageFile(f);
+                if(f != null)
+                {
+                    Global tmp = Global.getInstance();
+                    tmp.setImageFile(f);
+                }
             }
         });
         
@@ -108,15 +111,6 @@ public class ImageChooser_layout {
                 
                 CardLayout card = (CardLayout) container.getLayout();
                 card.show(container,"card4");
-                Thread t = new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        CardLayout card = (CardLayout) container.getLayout();
-                        card.show(container,"card4");//To change body of generated methods, choose Tools | Templates.
-                        System.out.println("Thread is running");
-                    }
-                });
-                t.start();
             }
         });
         Next.add(nextButton);

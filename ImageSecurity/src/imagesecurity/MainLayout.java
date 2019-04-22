@@ -6,6 +6,7 @@
 package imagesecurity;
 
 import imagesecurity.ImageTotext.*;
+import imagesecurity.TextToImage.TextConversion_layout;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.awt.Container;
@@ -37,8 +38,8 @@ public class MainLayout extends javax.swing.JFrame {
 
         DashBoard = new javax.swing.JPanel();
         ImageChooser = new javax.swing.JPanel();
-        ImageConversion = new javax.swing.JPanel();
         CaptchaValidation = new javax.swing.JPanel();
+        ImageConversion = new javax.swing.JPanel();
         ViewHistory = new javax.swing.JPanel();
         TextChooser = new javax.swing.JPanel();
         TextConverter = new javax.swing.JPanel();
@@ -78,6 +79,23 @@ public class MainLayout extends javax.swing.JFrame {
         ImageChooser_layout ic_layout = new ImageChooser_layout();
         ic_layout.run(ImageChooser, getContentPane());
 
+        CaptchaValidation.setBackground(new java.awt.Color(191, 181, 173));
+        CaptchaValidation.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 100, 100));
+        getContentPane().add(CaptchaValidation, "card5");
+        History_layout HLayout = new History_layout();
+        HLayout.run(CaptchaValidation,getContentPane());
+        CaptchaValidation.setName("4");
+
+        ImageConversion.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                ImageConversionFocusGained(evt);
+            }
+        });
+        ImageConversion.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                ImageConversionComponentShown(evt);
+            }
+        });
         ImageConversion.setLayout(new javax.swing.BoxLayout(ImageConversion, javax.swing.BoxLayout.Y_AXIS));
         getContentPane().add(ImageConversion, "card4");
         //ImageConversion.setBackground(new java.awt.Color(191, 181, 173));
@@ -85,13 +103,6 @@ public class MainLayout extends javax.swing.JFrame {
         ImageConversion_layout ICON_layout = new ImageConversion_layout();
         ICON_layout.run(ImageConversion, getContentPane());
         ImageConversion.setName("3");
-
-        CaptchaValidation.setBackground(new java.awt.Color(191, 181, 173));
-        CaptchaValidation.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 100, 100));
-        getContentPane().add(CaptchaValidation, "card5");
-        History_layout HLayout = new History_layout();
-        HLayout.run(CaptchaValidation,getContentPane());
-        CaptchaValidation.setName("4");
 
         ViewHistory.setBackground(new java.awt.Color(191, 181, 173));
         ViewHistory.setLayout(new java.awt.GridLayout(1, 2, 2, 0));
@@ -114,19 +125,11 @@ public class MainLayout extends javax.swing.JFrame {
         getContentPane().add(TextChooser, "card7");
         TextChooser.setName("6");
 
-        javax.swing.GroupLayout TextConverterLayout = new javax.swing.GroupLayout(TextConverter);
-        TextConverter.setLayout(TextConverterLayout);
-        TextConverterLayout.setHorizontalGroup(
-            TextConverterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 994, Short.MAX_VALUE)
-        );
-        TextConverterLayout.setVerticalGroup(
-            TextConverterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
-        );
-
+        TextConverter.setBackground(new java.awt.Color(191, 181, 173));
         getContentPane().add(TextConverter, "card8");
         TextConverter.setName("7");
+        TextConversion_layout TC_layout = new TextConversion_layout();
+        TC_layout.run(TextConverter,getContentPane());
 
         MenuBar.setBackground(new java.awt.Color(255, 0, 51));
         MenuBar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -225,6 +228,14 @@ public class MainLayout extends javax.swing.JFrame {
     private void file_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_file_exitActionPerformed
         System.exit(0);
     }//GEN-LAST:event_file_exitActionPerformed
+
+    private void ImageConversionFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ImageConversionFocusGained
+        //new ImageConversion_layout().loadData();
+    }//GEN-LAST:event_ImageConversionFocusGained
+
+    private void ImageConversionComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_ImageConversionComponentShown
+        new ImageConversion_layout().loadData();
+    }//GEN-LAST:event_ImageConversionComponentShown
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {                                     
         Container container = getContentPane();

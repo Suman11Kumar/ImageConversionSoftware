@@ -5,9 +5,6 @@
  */
 package imagesecurity;
 
-
-
-
 import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamPanel;
 import com.github.sarxos.webcam.WebcamResolution;
@@ -25,36 +22,30 @@ import  java.lang.Thread;
  */
 public class camera extends javax.swing.JFrame {
 
-  protected Dimension ds=new Dimension(700,700);
-  protected Dimension cs=WebcamResolution.VGA.getSize();
-  protected Webcam wcam=Webcam.getDefault();
-  protected WebcamPanel wpanel=new WebcamPanel(wcam,ds,false);
+    protected Dimension ds=new Dimension(700,700);
+    protected Dimension cs=WebcamResolution.VGA.getSize();
+    protected Webcam wcam=Webcam.getDefault();
+    protected WebcamPanel wpanel=new WebcamPanel(wcam,ds,false);
     
     public camera() {
         initComponents();
-         wcam.setViewSize(cs);
+        wcam.setViewSize(cs);
         wpanel.setFillArea(true);
         panelcam.setLayout(new FlowLayout());
-        panelcam.add(wpanel);
-        
-  
-        
-        
-        
+        panelcam.add(wpanel);        
     }
-public void start1()
-{
-   Thread t=new Thread(){
-           public void run(){
-             wpanel.start();
-           }
-        
-        
-        };
+    
+    public void start1()
+    {
+        Thread t=new Thread(new Runnable(){
+            @Override
+            public void run() {
+                wpanel.start();
+            }
+        });
         t.setDaemon(true);
         t.start();
-}
-
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -119,11 +110,12 @@ public void start1()
 
     private void captureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_captureActionPerformed
       try{
-        File file=new File(String.format("capture-%d.jpg",System.currentTimeMillis()));
-        ImageIO.write(wcam.getImage(),"JPG", file);
-        JOptionPane.showMessageDialog(this,"this is max"+file.getAbsolutePath(),"camera",1);
+            File file=new File(String.format("capture-%d.jpg",System.currentTimeMillis()));
         
-        
+            ImageIO.write(wcam.getImage(),"JPG", file);
+            JOptionPane.showMessageDialog(this,"this is max"+file.getAbsolutePath(),"camera",1);
+            Global tmp = Global.getInstance();
+            tmp.setImageFile(file);
         }
         catch(IOException e)
         {

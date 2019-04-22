@@ -230,20 +230,6 @@
         <Property name="axis" type="int" value="1"/>
       </Layout>
     </Container>
-    <Container class="javax.swing.JPanel" name="ImageConversion">
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="//ImageConversion.setBackground(new java.awt.Color(191, 181, 173));&#xa;&#xa;ImageConversion_layout ICON_layout = new ImageConversion_layout();&#xa;ICON_layout.run(ImageConversion, getContentPane());&#xa;ImageConversion.setName(&quot;3&quot;);"/>
-      </AuxValues>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-          <CardConstraints cardName="card4"/>
-        </Constraint>
-      </Constraints>
-
-      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout">
-        <Property name="axis" type="int" value="1"/>
-      </Layout>
-    </Container>
     <Container class="javax.swing.JPanel" name="CaptchaValidation">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -262,6 +248,24 @@
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
         <Property name="horizontalGap" type="int" value="100"/>
         <Property name="verticalGap" type="int" value="100"/>
+      </Layout>
+    </Container>
+    <Container class="javax.swing.JPanel" name="ImageConversion">
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="ImageConversionFocusGained"/>
+        <EventHandler event="componentShown" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="ImageConversionComponentShown"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="//ImageConversion.setBackground(new java.awt.Color(191, 181, 173));&#xa;&#xa;ImageConversion_layout ICON_layout = new ImageConversion_layout();&#xa;ICON_layout.run(ImageConversion, getContentPane());&#xa;ImageConversion.setName(&quot;3&quot;);"/>
+      </AuxValues>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+          <CardConstraints cardName="card4"/>
+        </Constraint>
+      </Constraints>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout">
+        <Property name="axis" type="int" value="1"/>
       </Layout>
     </Container>
     <Container class="javax.swing.JPanel" name="ViewHistory">
@@ -309,8 +313,13 @@
       </Layout>
     </Container>
     <Container class="javax.swing.JPanel" name="TextConverter">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ad" green="b5" red="bf" type="rgb"/>
+        </Property>
+      </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="TextConverter.setName(&quot;7&quot;);"/>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="TextConverter.setName(&quot;7&quot;);&#xa;TextConversion_layout TC_layout = new TextConversion_layout();&#xa;TC_layout.run(TextConverter,getContentPane());"/>
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
@@ -318,18 +327,7 @@
         </Constraint>
       </Constraints>
 
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="994" max="32767" attributes="0"/>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="500" max="32767" attributes="0"/>
-          </Group>
-        </DimensionLayout>
-      </Layout>
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
     </Container>
   </SubComponents>
 </Form>

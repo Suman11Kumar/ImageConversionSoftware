@@ -8,6 +8,8 @@ package imagesecurity.ImageTotext;
 import imagesecurity.Global;
 import java.awt.Container;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
@@ -20,6 +22,7 @@ import javax.swing.SwingConstants;
  * @author Suman
  */
 public class ImageConversion_layout {
+    
     private javax.swing.JPanel main;
     private javax.swing.JLabel ImageLoad;
     private javax.swing.JPanel ImageStatus;
@@ -29,9 +32,9 @@ public class ImageConversion_layout {
     private javax.swing.JLabel name;
     private javax.swing.JButton convert;
     private String path;
-    public void run(javax.swing.JPanel ImageConversion, Container container)
-    {
-        ImageConversion.setBackground(new java.awt.Color(191, 181, 173));
+    private Thread t1,t2;
+    
+    public ImageConversion_layout(){
         path = null;
         main = new javax.swing.JPanel();
         SaveText = new javax.swing.JButton();
@@ -42,29 +45,31 @@ public class ImageConversion_layout {
         convert = new javax.swing.JButton();
         name = new javax.swing.JLabel();
         
+    }
+    
+    public void run(javax.swing.JPanel ImageConversion, Container container)
+    {
+        ImageConversion.setBackground(new java.awt.Color(191, 181, 173));
+        
         main.setLayout(new javax.swing.BoxLayout(main, javax.swing.BoxLayout.X_AXIS));
         main.setMaximumSize(new java.awt.Dimension(500, 300));
         //main.setMaximumSize(maximumSize);
-        ImageLoad.setPreferredSize(new java.awt.Dimension(350, 320));
+        ImageLoad.setMaximumSize(new java.awt.Dimension(270, 240));
+        ImageLoad.setPreferredSize(new java.awt.Dimension(270, 240));
+        ImageLoad.setMinimumSize(new java.awt.Dimension(270, 240));
         ImageLoad.setVerifyInputWhenFocusTarget(false);
         ImageLoad.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         main.add(ImageLoad);
-        Imagechoose();
+        //Imagechoose();
         
         ImageStatus.setLayout(new javax.swing.BoxLayout(ImageStatus, javax.swing.BoxLayout.Y_AXIS));
 
         name.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        // Code adding the component to the parent container - not shown here
-        if(path != null){
-            int index = path.lastIndexOf('\\');
-            path = path.substring(index+1);
-            name.setText(path);
-        }
         ImageStatus.add(name);
         name.setBorder(BorderFactory.createEmptyBorder(20,0,30,0));
                 
         ProgressBar.setBackground(new java.awt.Color(153, 153, 0));
-        ProgressBar.setMaximumSize(new java.awt.Dimension(32767, 50));
+        ProgressBar.setMaximumSize(new java.awt.Dimension(350, 50));
         ProgressBar.setMinimumSize(new java.awt.Dimension(10, 50));
         ProgressBar.setPreferredSize(new java.awt.Dimension(146, 50));
         
@@ -83,6 +88,13 @@ public class ImageConversion_layout {
         convert.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         convert.setText("Convert");
         convert.setMargin(new java.awt.Insets(10, 50, 10, 50));
+        convert.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                t2 = new Thread(new progress());
+                t2.start();
+            }
+        });
         ImageStatus.add(convert);
         
         SaveText.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -93,31 +105,54 @@ public class ImageConversion_layout {
         ImageConversion.add(main);
         ImageConversion.add(SaveText);
         main.setOpaque(true);
-        
+    }
+   
+    public void loadData(){
+
+        new Thread(new imagechoose()).start();
     }
     
-    private void Imagechoose()
-    {
-        Global tmp = Global.getInstance();
+    private class progress implements Runnable{
+
+        @Override
+        public void run() {
+            convert.setEnabled(false);
+            Global tmp = Global.getInstance();
+            for (int i=0; i<=100; i++){ //Progressively increment variable i
+                ProgressBar.setValue(i); //Set value
+                ProgressBar.repaint(); //Refresh graphics
+                try{Thread.sleep(50);} //Sleep 50 milliseconds
+                catch (InterruptedException err){}
+            }
+        }
+    }
+    
+    private class imagechoose implements Runnable{
+
+        @Override
+        public void run() {
+            Global tmp = Global.getInstance();
         path = tmp.getImageFile();
-
-
-        System.out.println(path);
-
-        ImageLoad.setSize(new java.awt.Dimension(219, 236));
+        ImageLoad.setSize(270,240);
+        System.out.println("Path is: " + path);
         try
         {
             if(path != null){
+                name.setText(path.substring(path.lastIndexOf('\\')+1));
+                System.out.println(name.getText());
                 File file = new File(path);
                 Image image = ImageIO.read(file);
                 Image scaledInstance = image.getScaledInstance(ImageLoad.getWidth(), ImageLoad.getHeight(), Image.SCALE_SMOOTH);
                 ImageIcon img = new ImageIcon(scaledInstance);
                 ImageLoad.setIcon(img);
             }
+            else
+                JOptionPane.showMessageDialog(null, "Selct an Image");
         }
         catch(Exception e)
         {
             e.printStackTrace();
+        }
         }
     }
 }
