@@ -1,9 +1,10 @@
 annotation.processing.enabled=true
 annotation.processing.enabled.in.editor=false
-annotation.processing.processor.options=
 annotation.processing.processors.list=
 annotation.processing.run.all.processors=true
 annotation.processing.source.output=${build.generated.sources.dir}/ap-source-output
+application.title=ImageConversionSoftware
+application.vendor=max
 build.classes.dir=${build.dir}/classes
 build.classes.excludes=**/*.java,**/*.form
 # This directory is removed when the project is cleaned:
@@ -26,32 +27,33 @@ dist.archive.excludes=
 dist.dir=dist
 dist.jar=${dist.dir}/ImageConversionSoftware.jar
 dist.javadoc.dir=${dist.dir}/javadoc
+endorsed.classpath=
 excludes=
-file.reference.bridj-0.7.0.jar=C:\\Users\\max\\Desktop\\New folder\\libs\\bridj-0.7.0.jar
-file.reference.bridj-0.7.0.jar-1=C:\\Users\\Suman\\Downloads\\Untitled\\libs\\bridj-0.7.0.jar
-file.reference.slf4j-api-1.7.2.jar=C:\\Users\\max\\Desktop\\New folder\\libs\\slf4j-api-1.7.2.jar
-file.reference.slf4j-api-1.7.2.jar-1=C:\\Users\\Suman\\Downloads\\Untitled\\libs\\slf4j-api-1.7.2.jar
-file.reference.webcam-capture-0.3.12.jar=C:\\Users\\max\\Desktop\\New folder\\webcam-capture-0.3.12.jar
-<<<<<<< HEAD
-file.reference.webcam-capture-0.3.12.jar-1=C:\\Users\\Suman\\Downloads\\Untitled\\libs\\webcam-capture-0.3.12.jar
-=======
-file.reference.webcam-capture-0.3.12.jar-1=C:\\Users\\max\\Desktop\\New folder\\libs\\webcam-capture-0.3.12.jar
->>>>>>> 0b716ea3d5e3496dee46b482f9ce3e26929cf530
+file.reference.bridj-0.7.0.jar=C:\\Users\\Suman\\Documents\\NetBeansProjects\\imagepractice\\ImageConversionSoftware\\ImageSecurity\\dist\\lib\\bridj-0.7.0.jar
+file.reference.bridj-0.7.0.jar-1=dist\\lib\\bridj-0.7.0.jar
+file.reference.mysql-connector-java-5.1.47-bin.jar=C:\\Program Files\\Java\\jre1.8.0_201\\lib\\ext\\mysql-connector-java-5.1.47-bin.jar
+file.reference.mysql-connector-java-8.0.15.jar=C:\\Users\\Suman\\Downloads\\mysql-connector-java-8.0.15\\mysql-connector-java-8.0.15\\mysql-connector-java-8.0.15.jar
+file.reference.mysql-connector-java-8.0.15.jar-1=C:\\Users\\max\\Desktop\\java stuff\\jdbc driver\\mysql-connector-java-8.0.15\\mysql-connector-java-8.0.15.jar
+file.reference.slf4j-api-1.7.2.jar=C:\\Users\\Suman\\Documents\\NetBeansProjects\\imagepractice\\ImageConversionSoftware\\ImageSecurity\\dist\\lib\\slf4j-api-1.7.2.jar
+file.reference.slf4j-api-1.7.2.jar-1=dist\\lib\\slf4j-api-1.7.2.jar
+file.reference.webcam-capture-0.3.12.jar=C:\\Users\\Suman\\Documents\\NetBeansProjects\\imagepractice\\ImageConversionSoftware\\ImageSecurity\\dist\\lib\\webcam-capture-0.3.12.jar
+file.reference.webcam-capture-0.3.12.jar-1=dist\\lib\\webcam-capture-0.3.12.jar
 includes=**
 jar.compress=false
 javac.classpath=\
     ${libs.absolutelayout.classpath}:\
     ${file.reference.bridj-0.7.0.jar}:\
+    ${file.reference.mysql-connector-java-8.0.15.jar}:\
     ${file.reference.slf4j-api-1.7.2.jar}:\
     ${file.reference.webcam-capture-0.3.12.jar}:\
+    ${file.reference.mysql-connector-java-5.1.47-bin.jar}:\
 <<<<<<< HEAD
     ${file.reference.bridj-0.7.0.jar-1}:\
     ${file.reference.slf4j-api-1.7.2.jar-1}:\
-    ${file.reference.webcam-capture-0.3.12.jar-1}:\
-    ${libs.MySQLDriver.classpath}
-=======
     ${file.reference.webcam-capture-0.3.12.jar-1}
->>>>>>> 0b716ea3d5e3496dee46b482f9ce3e26929cf530
+=======
+    ${file.reference.mysql-connector-java-8.0.15.jar-1}
+>>>>>>> 993ef07dc2bb602ae39109d998d0549876c7f64b
 # Space-separated list of extra javac options
 javac.compilerargs=
 javac.deprecation=false

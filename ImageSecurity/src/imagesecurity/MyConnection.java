@@ -21,19 +21,16 @@ public class MyConnection
         Connection conn=null;
         try
         {
-            Class.forName("com.mysql.jdbc.Driver");
-            System.out.println("Connection Established");
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+        System.out.println("driver loaded"); // THIS IS BEING RETURNED
+    } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
+        System.err.println(ex);
+    }
     
-           
-        }catch(ClassNotFoundException ex)
-        {
-            ex.printStackTrace();
-        }
+       
         try{
-            System.out.println("Hello");
             String url = "jdbc:mysql://(host=127.0.0.1,port=3306)/imagesecurity";
             conn=DriverManager.getConnection(url,"root","");
-            
         }
         catch(SQLException e){
             e.printStackTrace();
