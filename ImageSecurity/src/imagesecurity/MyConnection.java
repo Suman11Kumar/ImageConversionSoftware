@@ -21,17 +21,23 @@ public class MyConnection
         Connection conn=null;
         try
         {
-            Class.forName("com.mysql.jdbc.Driver");
-            System.out.println("Connection Established");
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+        System.out.println("driver loaded"); // THIS IS BEING RETURNED
+    } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
+        System.err.println(ex);
+    }
     
-           
-        }catch(ClassNotFoundException ex)
-        {
-            ex.printStackTrace();
-        }
+       
         try{
-            String url = "jdbc:mysql://(host=127.0.0.1,port=3306)/imagesecurity";
-            conn=DriverManager.getConnection(url,"root","");
+           // String url = "jdbc:mysql://(host=127.0.0.1,port=3306)/imagesecurity";
+           // String url = "jdbc:mysql://db4free.net:3306/imagesecurity";
+           // conn=DriverManager.getConnection(url,"root","");
+          // conn=DriverManager.getConnection(url,"imagedb","12345678");
+         // conn = DriverManager.getConnection("jdbc:mysql://db4free.net:3306/imagesecurity","imagedb","12345678");
+      //  System.out.println("connected"); // THIS IS NOT BEING RETURNED
+      conn = DriverManager.getConnection("jdbc:mysql://db4free.net:3306/imagesecurity","imagedb","12345678");
+       // System.out.println("connected");
+       
         }
         catch(SQLException e){
             e.printStackTrace();
