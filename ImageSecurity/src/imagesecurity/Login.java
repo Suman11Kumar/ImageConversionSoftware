@@ -165,9 +165,10 @@ public class Login extends javax.swing.JFrame {
         }
                
         PreparedStatement ps = null;
-        String query="Select * from login where User_Name = ? and Password = ?";
+        String query="Select * from Login where User_Name = ? and Password = ?";
         try {
-            ps=MyConnection.getConnection().prepareStatement(query);
+           // ps=MyConnection.getConnection().prepareStatement(query);
+                      ps=ConnectionManager.getConnection().prepareStatement(query);
             ps.setString(1, Name);
             ps.setString(2, Password);
             ResultSet rs = ps.executeQuery();
