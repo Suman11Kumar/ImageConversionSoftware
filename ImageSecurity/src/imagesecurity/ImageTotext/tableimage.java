@@ -6,6 +6,7 @@
 package imagesecurity.ImageTotext;
 
 import java.awt.Container;
+import java.awt.Image;
 import javax.swing.ImageIcon;
 
 /**
@@ -21,7 +22,9 @@ public class tableimage {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
      private javax.swing.JTable jTable1;
-    private ImageIcon image;
+ //   private ImageIcon image;
+    private ImageIcon image,myimage;
+    private Image img1,img2;
     
     public void run(javax.swing.JPanel ViewHistory,Container container)
     {
@@ -126,10 +129,23 @@ public class tableimage {
         
     }
      private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {                                     
-       int row=jTable1.getSelectedRow();
+       
+      int row=jTable1.getSelectedRow();
        String t=jTable1.getModel().getValueAt(row,0).toString();
-       image=new ImageIcon("C:\\Users\\max\\Documents\\NetBeansProjects\\ImageConversionSoftware\\ImageSecurity\\"+t);
-       jLabel1.setIcon(image);
+      
+      
+      
+      /* ImageIcon*/ myimage=new ImageIcon("C:\\Users\\max\\Documents\\NetBeansProjects\\ImageConversionSoftware\\ImageSecurity\\"+t);       
+         /*  Image*/ img1=myimage.getImage();
+      /* Image*/ img2=img1.getScaledInstance(jLabel1.getWidth(),jLabel1.getHeight(),Image.SCALE_SMOOTH);    
+       image=new ImageIcon(img2);
+       jLabel1.setIcon(image);  
+         
+
+//  int row=jTable1.getSelectedRow();
+     //  String t=jTable1.getModel().getValueAt(row,0).toString();
+     //  image=new ImageIcon("C:\\Users\\max\\Documents\\NetBeansProjects\\ImageConversionSoftware\\ImageSecurity\\"+t);
+    //   jLabel1.setIcon(image);
     }                  
     
     
