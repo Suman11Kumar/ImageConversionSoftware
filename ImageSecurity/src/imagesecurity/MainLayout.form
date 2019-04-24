@@ -256,7 +256,7 @@
         <EventHandler event="componentShown" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="ImageConversionComponentShown"/>
       </Events>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="//ImageConversion.setBackground(new java.awt.Color(191, 181, 173));&#xa;&#xa;ImageConversion_layout ICON_layout = new ImageConversion_layout();&#xa;ICON_layout.run(ImageConversion, getContentPane());&#xa;ImageConversion.setName(&quot;3&quot;);"/>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="//ImageConversion.setBackground(new java.awt.Color(191, 181, 173));&#xa;&#xa;//ImageConversion_layout ICON_layout = new ImageConversion_layout(ImageConversion, getContentPane());&#xa;ImageConversion.setName(&quot;3&quot;);"/>
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">

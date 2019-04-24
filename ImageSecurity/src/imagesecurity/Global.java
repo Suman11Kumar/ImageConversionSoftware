@@ -24,7 +24,6 @@ public class Global {
     }
     
     public String getImageFile(){
-        System.out.println("hello");
         return ImagePath;
     }
     

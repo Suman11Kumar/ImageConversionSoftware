@@ -30,13 +30,19 @@ public class MyConnection
             ex.printStackTrace();
         }
         try{
+            System.out.println("Hello");
             String url = "jdbc:mysql://(host=127.0.0.1,port=3306)/imagesecurity";
             conn=DriverManager.getConnection(url,"root","");
+            
         }
         catch(SQLException e){
             e.printStackTrace();
         }
         return conn;
+    }
+    public static void main(String args[])
+    {
+        getConnection();
     }
 }
 

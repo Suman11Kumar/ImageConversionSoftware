@@ -5,9 +5,12 @@
  */
 package imagesecurity.ImageTotext;
 
+import imagesecurity.MyConnection;
 import java.awt.Container;
 import java.awt.Image;
+import java.sql.*;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -25,6 +28,7 @@ public class tableimage {
  //   private ImageIcon image;
     private ImageIcon image,myimage;
     private Image img1,img2;
+    private String[][] a;
     
     public void run(javax.swing.JPanel ViewHistory,Container container)
     {
@@ -38,7 +42,7 @@ public class tableimage {
         jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         
-        
+        fetch();
         
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -146,7 +150,47 @@ public class tableimage {
      //  String t=jTable1.getModel().getValueAt(row,0).toString();
      //  image=new ImageIcon("C:\\Users\\max\\Documents\\NetBeansProjects\\ImageConversionSoftware\\ImageSecurity\\"+t);
     //   jLabel1.setIcon(image);
-    }                  
-    
-    
+    }
+     
+    public void fetch()
+    {
+        String a;
+        Connection pa = null;
+        ResultSet r = null;
+        Statement stmt = null;
+        int i=0;
+        try
+        {
+            String query1="select Image_Name from Image_Information where User_Name='suman'";
+            pa=MyConnection.getConnection(); //prepareStatement(query1);
+            stmt=pa.createStatement();
+            r=stmt.executeQuery(query1);
+            System.out.println("Hello 1");
+            while(r.next())
+            {
+                a = r.getString("Image_Name");
+                System.out.println(a + "hello");
+            }  
+        }
+         
+       catch(Exception e) 
+       {
+           JOptionPane.showMessageDialog(null,e);
+       }
+        finally{
+            try{
+                pa.close();
+                r.close(); 
+            }
+            catch(SQLException e){
+                e.printStackTrace();
+            }
+        }
+       
+    }
+
+    public static void main(String args[]){
+        tableimage ti = new tableimage();
+        ti.fetch();
+    }
 }

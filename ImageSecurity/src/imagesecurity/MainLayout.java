@@ -100,8 +100,7 @@ public class MainLayout extends javax.swing.JFrame {
         getContentPane().add(ImageConversion, "card4");
         //ImageConversion.setBackground(new java.awt.Color(191, 181, 173));
 
-        ImageConversion_layout ICON_layout = new ImageConversion_layout();
-        ICON_layout.run(ImageConversion, getContentPane());
+        //ImageConversion_layout ICON_layout = new ImageConversion_layout(ImageConversion, getContentPane());
         ImageConversion.setName("3");
 
         ViewHistory.setBackground(new java.awt.Color(191, 181, 173));
@@ -234,7 +233,7 @@ public class MainLayout extends javax.swing.JFrame {
     }//GEN-LAST:event_ImageConversionFocusGained
 
     private void ImageConversionComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_ImageConversionComponentShown
-        new ImageConversion_layout().loadData();
+        new ImageConversion_layout(ImageConversion,getContentPane()).loadData();
     }//GEN-LAST:event_ImageConversionComponentShown
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {                                     

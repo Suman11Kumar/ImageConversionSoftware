@@ -15,13 +15,14 @@ import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 /**
  *
  * @author Suman
  */
-public class ImageConversion_layout {
+public final class ImageConversion_layout {
     
     private javax.swing.JPanel main;
     private javax.swing.JLabel ImageLoad;
@@ -34,7 +35,12 @@ public class ImageConversion_layout {
     private String path;
     private Thread t1,t2;
     
-    public ImageConversion_layout(){
+    public ImageConversion_layout(JPanel ImageConversion, Container contentPane) {
+        build(ImageConversion,contentPane); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public void build(javax.swing.JPanel ImageConversion, Container container)
+    {
         path = null;
         main = new javax.swing.JPanel();
         SaveText = new javax.swing.JButton();
@@ -45,10 +51,6 @@ public class ImageConversion_layout {
         convert = new javax.swing.JButton();
         name = new javax.swing.JLabel();
         
-    }
-    
-    public void run(javax.swing.JPanel ImageConversion, Container container)
-    {
         ImageConversion.setBackground(new java.awt.Color(191, 181, 173));
         
         main.setLayout(new javax.swing.BoxLayout(main, javax.swing.BoxLayout.X_AXIS));
