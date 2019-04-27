@@ -36,10 +36,10 @@ public final class ImageConversion_layout {
     private Thread t1,t2;
     
     public ImageConversion_layout(JPanel ImageConversion, Container contentPane) {
-        build(ImageConversion,contentPane); //To change body of generated methods, choose Tools | Templates.
+        build(ImageConversion,contentPane);
     }
     
-    public void build(javax.swing.JPanel ImageConversion, Container container)
+    private void build(javax.swing.JPanel ImageConversion, Container container)
     {
         path = null;
         main = new javax.swing.JPanel();
@@ -136,12 +136,12 @@ public final class ImageConversion_layout {
             Global tmp = Global.getInstance();
         path = tmp.getImageFile();
         ImageLoad.setSize(270,240);
-        System.out.println("Path is: " + path);
+        //System.out.println("Path is: " + path);
         try
         {
             if(path != null){
                 name.setText(path.substring(path.lastIndexOf('\\')+1));
-                System.out.println(name.getText());
+                //System.out.println(name.getText());
                 File file = new File(path);
                 Image image = ImageIO.read(file);
                 Image scaledInstance = image.getScaledInstance(ImageLoad.getWidth(), ImageLoad.getHeight(), Image.SCALE_SMOOTH);

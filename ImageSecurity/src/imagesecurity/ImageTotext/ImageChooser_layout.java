@@ -12,7 +12,6 @@ import java.awt.CardLayout;
 import java.awt.FlowLayout;
 import java.io.File;
 import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 public class ImageChooser_layout {
     
@@ -25,24 +24,27 @@ public class ImageChooser_layout {
     private javax.swing.JPanel camera;
     private javax.swing.JPanel browse;
     private javax.swing.JPanel Next;
+    private javax.swing.JLabel ImageSelected;
+    
     
     public void run(javax.swing.JPanel ImageChooser,Container container)
     {
         choose = new javax.swing.JPanel();
-        choose.setLayout(new javax.swing.BoxLayout(choose, javax.swing.BoxLayout.X_AXIS));
-        choose.setPreferredSize(new java.awt.Dimension(container.getWidth(), container.getHeight() * 3 / 4));
-        
         camera = new javax.swing.JPanel();
         browse = new javax.swing.JPanel();
-        camera.setBackground(new java.awt.Color(191, 181, 173));
-        browse.setBackground(new java.awt.Color(191, 181, 173));
-        
         camera_btn = new javax.swing.JButton();
         browse_btn = new javax.swing.JButton();
-        
         camera_lbl = new javax.swing.JLabel();
         browse_lbl = new javax.swing.JLabel();
+        ImageSelected = new javax.swing.JLabel();
         
+        ImageChooser.setBackground(new java.awt.Color(191, 181, 173));
+        choose.setLayout(new javax.swing.BoxLayout(choose, javax.swing.BoxLayout.X_AXIS));
+        choose.setPreferredSize(new java.awt.Dimension(container.getWidth(), container.getHeight() * 3 / 4));
+                
+        camera.setBackground(new java.awt.Color(191, 181, 173));
+        browse.setBackground(new java.awt.Color(191, 181, 173));
+               
         camera.setLayout(new java.awt.FlowLayout(FlowLayout.LEFT, 100, 25));
         browse.setLayout(new java.awt.FlowLayout(FlowLayout.LEFT, 100, 25));
 
@@ -59,12 +61,14 @@ public class ImageChooser_layout {
                 camera f=new camera();
                 f.setVisible(true);
                 f.start1();
+                ImageSelected.setText(Global.getInstance().getImageFile());
             }
         });
         camera.setPreferredSize(new java.awt.Dimension(200,choose.getHeight()));
         camera.add(camera_lbl);
         camera.add(camera_btn);
         choose.add(camera);
+        System.out.println("camera panel created");
         
         browse_lbl.setText("Browse Image");
         browse_lbl.setPreferredSize(new java.awt.Dimension(200, 100));
@@ -86,6 +90,7 @@ public class ImageChooser_layout {
                 {
                     Global tmp = Global.getInstance();
                     tmp.setImageFile(f);
+                    ImageSelected.setText(Global.getInstance().getImageFile());
                 }
             }
         });
@@ -94,7 +99,9 @@ public class ImageChooser_layout {
         browse.add(browse_lbl);
         browse.add(browse_btn);
         choose.add(browse);
+        System.out.println("browse panel created");
         ImageChooser.add(choose);
+        System.out.println("choose panel created");
         
         Next = new javax.swing.JPanel();
         Next.setBackground(new java.awt.Color(191, 181, 173));
@@ -113,7 +120,11 @@ public class ImageChooser_layout {
                 card.show(container,"card4");
             }
         });
+        //ImageSelected.setPreferredSize(new java.awt.Dimension(100, 50));
+        
+        Next.add(ImageSelected);
         Next.add(nextButton);
         ImageChooser.add(Next);
+        System.out.println("next panel created");
     }
 }

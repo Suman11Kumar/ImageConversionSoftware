@@ -66,7 +66,7 @@ public class History_layout {
             Refresh.setBounds(0,0,30,40);
             File f = new File("./build/classes/imagesecurity/Icons/refresh.jpg");
             String path = f.getAbsoluteFile().toString();
-            System.out.println(path);
+            //System.out.println(path);
             refresh_btn = ImageIO.read(f);
             Image scaled = refresh_btn.getScaledInstance(Refresh.getWidth(),Refresh.getHeight() , Image.SCALE_SMOOTH);
             ImageIcon ref = new ImageIcon(scaled);

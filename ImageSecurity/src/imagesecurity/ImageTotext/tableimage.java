@@ -42,7 +42,7 @@ public class tableimage {
         jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         
-        fetch();
+//        fetch();
         
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -165,11 +165,11 @@ public class tableimage {
             pa=MyConnection.getConnection(); //prepareStatement(query1);
             stmt=pa.createStatement();
             r=stmt.executeQuery(query1);
-            System.out.println("Hello 1");
+            //System.out.println("Hello 1");
             while(r.next())
             {
                 a = r.getString("Image_Name");
-                System.out.println(a + "hello");
+                //System.out.println(a + "hello");
             }  
         }
          

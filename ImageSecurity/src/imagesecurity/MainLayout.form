@@ -216,26 +216,15 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
     </Container>
-    <Container class="javax.swing.JPanel" name="ImageChooser">
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="ImageChooser.setBackground(new java.awt.Color(191, 181, 173));&#xa;ImageChooser.setName(&quot;2&quot;);&#xa;ImageChooser_layout ic_layout = new ImageChooser_layout();&#xa;ic_layout.run(ImageChooser, getContentPane());"/>
-      </AuxValues>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-          <CardConstraints cardName="card3"/>
-        </Constraint>
-      </Constraints>
-
-      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout">
-        <Property name="axis" type="int" value="1"/>
-      </Layout>
-    </Container>
     <Container class="javax.swing.JPanel" name="CaptchaValidation">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ad" green="b5" red="bf" type="rgb"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="componentShown" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="CaptchaValidationComponentShown"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="History_layout HLayout = new History_layout();&#xa;HLayout.run(CaptchaValidation,getContentPane());&#xa;CaptchaValidation.setName(&quot;4&quot;);"/>
       </AuxValues>
@@ -250,9 +239,25 @@
         <Property name="verticalGap" type="int" value="100"/>
       </Layout>
     </Container>
+    <Container class="javax.swing.JPanel" name="ImageChooser">
+      <Events>
+        <EventHandler event="componentShown" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="ImageChooserComponentShown"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="ImageChooser.setName(&quot;2&quot;);&#xa;/*ImageChooser_layout IC_layout = new ImageChooser_layout();&#xa;IC_layout.run(ImageChooser,getContentPane());*/"/>
+      </AuxValues>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+          <CardConstraints cardName="card3"/>
+        </Constraint>
+      </Constraints>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout">
+        <Property name="axis" type="int" value="1"/>
+      </Layout>
+    </Container>
     <Container class="javax.swing.JPanel" name="ImageConversion">
       <Events>
-        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="ImageConversionFocusGained"/>
         <EventHandler event="componentShown" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="ImageConversionComponentShown"/>
       </Events>
       <AuxValues>
@@ -290,6 +295,9 @@
       </Layout>
     </Container>
     <Container class="javax.swing.JPanel" name="TextChooser">
+      <Events>
+        <EventHandler event="componentShown" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="TextChooserComponentShown"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="TextChooser.setName(&quot;6&quot;);"/>
       </AuxValues>
@@ -318,6 +326,9 @@
           <Color blue="ad" green="b5" red="bf" type="rgb"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="componentShown" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="TextConverterComponentShown"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="TextConverter.setName(&quot;7&quot;);&#xa;TextConversion_layout TC_layout = new TextConversion_layout();&#xa;TC_layout.run(TextConverter,getContentPane());"/>
       </AuxValues>

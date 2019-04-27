@@ -33,7 +33,7 @@ public class Global {
     
     public void setImageFile(File file){
         ImagePath = file.getAbsolutePath();
-        System.out.println(ImagePath);
+        //System.out.println(ImagePath);
     }
     
     public void setTextFile(File file){
