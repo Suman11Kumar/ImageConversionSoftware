@@ -10,6 +10,8 @@ import imagesecurity.TextToImage.TextConversion_layout;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.*;
 import javax.swing.ImageIcon;
 
@@ -24,6 +26,10 @@ public class MainLayout extends javax.swing.JFrame {
      */
     public MainLayout() {
         initComponents();
+        Toolkit toolkit=getToolkit();
+        Dimension size=toolkit.getScreenSize();
+        setLocation(size.width/2 - getWidth()/2,size.height/2 - getHeight()/2);
+        
         //createcustompanel();
     }
 
