@@ -5,12 +5,15 @@
  */
 package imagesecurity.ImageTotext;
 
+import imagesecurity.ConnectionManager;
 import imagesecurity.MyConnection;
 import java.awt.Container;
 import java.awt.Image;
 import java.sql.*;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -28,7 +31,8 @@ public class tableimage {
  //   private ImageIcon image;
     private ImageIcon image,myimage;
     private Image img1,img2;
-    private String[][] a;
+    private byte[] image1;
+//    private String[][] a;
     
     public void run(javax.swing.JPanel ViewHistory,Container container)
     {
@@ -42,7 +46,7 @@ public class tableimage {
         jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         
-        fetch();
+  //      fetch();
         
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -57,12 +61,12 @@ public class tableimage {
          
        /* getContentPane()*/container.add(jPanel2, "card9");
         
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+       jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"image1.jpg"},
+                /*{"image1.jpg"},
                 {"image2.jpg"},
                 {"image3.jpg"},
-                {"image4.jpg"}
+                {"image4.jpg"}*/
             },
             new String [] {
                 "Image Detail"
@@ -76,6 +80,9 @@ public class tableimage {
                 return canEdit [columnIndex];
             }
         });
+        showname();
+        
+        
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
@@ -136,10 +143,10 @@ public class tableimage {
        
       int row=jTable1.getSelectedRow();
        String t=jTable1.getModel().getValueAt(row,0).toString();
+      System.out.println(t);
+      image1=fetchimage(t);
       
-      
-      
-      /* ImageIcon*/ myimage=new ImageIcon("C:\\Users\\max\\Documents\\NetBeansProjects\\ImageConversionSoftware\\ImageSecurity\\"+t);       
+      /* ImageIcon*/ myimage=new ImageIcon(image1);       
          /*  Image*/ img1=myimage.getImage();
       /* Image*/ img2=img1.getScaledInstance(jLabel1.getWidth(),jLabel1.getHeight(),Image.SCALE_SMOOTH);    
        image=new ImageIcon(img2);
@@ -152,24 +159,26 @@ public class tableimage {
     //   jLabel1.setIcon(image);
     }
      
-    public void fetch()
-    {
-        String a;
-        Connection pa = null;
+     
+public ArrayList<String> imagename()
+{
+   ArrayList<String> name=new ArrayList<>();
+   
+     Connection pa = null;
         ResultSet r = null;
         Statement stmt = null;
-        int i=0;
+        String a;
         try
         {
-            String query1="select Image_Name from Image_Information where User_Name='suman'";
-            pa=MyConnection.getConnection(); //prepareStatement(query1);
+            String query1="select Image_Name from Image_Information where User_Name='max'";
+            pa=ConnectionManager.getConnection(); //prepareStatement(query1);
             stmt=pa.createStatement();
             r=stmt.executeQuery(query1);
             System.out.println("Hello 1");
             while(r.next())
             {
-                a = r.getString("Image_Name");
-                System.out.println(a + "hello");
+               
+                name.add(new String(r.getString("Image_Name")));
             }  
         }
          
@@ -177,20 +186,55 @@ public class tableimage {
        {
            JOptionPane.showMessageDialog(null,e);
        }
-        finally{
-            try{
-                pa.close();
-                r.close(); 
-            }
-            catch(SQLException e){
-                e.printStackTrace();
-            }
-        }
-       
+    return name;
+
+}
+public void showname()
+{
+    ArrayList<String>name=imagename();
+    
+    DefaultTableModel model=(DefaultTableModel)jTable1.getModel();
+    Object[] row=new Object[1];
+    for(int i=0;i<name.size();i++)
+    { row[0]=name.get(i);
+       model.addRow(row);
     }
 
-    public static void main(String args[]){
-        tableimage ti = new tableimage();
-        ti.fetch();
-    }
+}
+     
+     
+     
+     
+     
+     
+    public byte[] fetchimage(String t)
+    {    byte[] image = null;
+        String a;
+        PreparedStatement pa = null;
+        ResultSet r = null;
+        Statement stmt = null;
+        int i=0;
+        try
+        {
+            String query1="select  Image from Image_Information where User_Name='max' and Image_Name=?";
+            pa=(PreparedStatement) ConnectionManager.getConnection().prepareStatement(query1); //prepareStatement(query1);
+           // stmt=pa.createStatement();
+          //  r=stmt.executeQuery(query1);
+            pa.setString(1,t);
+            r=pa.executeQuery();
+            System.out.println("Hello 1");
+            while(r.next())
+            {
+                image=r.getBytes("image");
+               // System.out.println( + "hello");
+            }  
+        }
+         
+       catch(Exception e) 
+       {
+           JOptionPane.showMessageDialog(null,e);
+       }
+       
+   return image; 
+}
 }
