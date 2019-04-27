@@ -330,7 +330,7 @@
         <EventHandler event="componentShown" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="TextConverterComponentShown"/>
       </Events>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="TextConverter.setName(&quot;7&quot;);&#xa;TextConversion_layout TC_layout = new TextConversion_layout();&#xa;TC_layout.run(TextConverter,getContentPane());"/>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="TextConverter.setName(&quot;7&quot;);&#xa;/*TextConversion_layout TC_layout = new TextConversion_layout();&#xa;TC_layout.run(TextConverter,getContentPane());*/"/>
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">

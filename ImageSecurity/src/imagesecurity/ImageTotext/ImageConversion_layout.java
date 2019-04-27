@@ -6,6 +6,7 @@
 package imagesecurity.ImageTotext;
 
 import imagesecurity.Global;
+import java.awt.CardLayout;
 import java.awt.Container;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -33,13 +34,15 @@ public final class ImageConversion_layout {
     private javax.swing.JLabel name;
     private javax.swing.JButton convert;
     private String path;
-    private Thread t1,t2;
+    private Thread t2;
+    private final Container container;
     
     public ImageConversion_layout(JPanel ImageConversion, Container contentPane) {
-        build(ImageConversion,contentPane);
+        this.container = contentPane;
+        build(ImageConversion);
     }
     
-    private void build(javax.swing.JPanel ImageConversion, Container container)
+    private void build(javax.swing.JPanel ImageConversion)
     {
         path = null;
         main = new javax.swing.JPanel();
@@ -122,7 +125,8 @@ public final class ImageConversion_layout {
             Global tmp = Global.getInstance();
             for (int i=0; i<=100; i++){ //Progressively increment variable i
                 ProgressBar.setValue(i); //Set value
-                ProgressBar.repaint(); //Refresh graphics
+                ProgressBar.repaint();
+                ConversionStatus.setText("Convertion Status..." + i + "%");//Refresh graphics
                 try{Thread.sleep(50);} //Sleep 50 milliseconds
                 catch (InterruptedException err){}
             }
@@ -134,27 +138,39 @@ public final class ImageConversion_layout {
         @Override
         public void run() {
             Global tmp = Global.getInstance();
-        path = tmp.getImageFile();
-        ImageLoad.setSize(270,240);
-        //System.out.println("Path is: " + path);
-        try
-        {
-            if(path != null){
-                name.setText(path.substring(path.lastIndexOf('\\')+1));
-                //System.out.println(name.getText());
-                File file = new File(path);
-                Image image = ImageIO.read(file);
-                Image scaledInstance = image.getScaledInstance(ImageLoad.getWidth(), ImageLoad.getHeight(), Image.SCALE_SMOOTH);
-                ImageIcon img = new ImageIcon(scaledInstance);
-                ImageLoad.setIcon(img);
+            path = tmp.getImageFile();
+            ImageLoad.setSize(270,240);
+            //System.out.println("Path is: " + path);
+            try
+            {
+                if(path != null){
+                    name.setText(path.substring(path.lastIndexOf('\\')+1));
+                    String ext = path.substring(path.lastIndexOf('.')+1);
+                    if(ext.equals("jpg")|| ext.equals("jpeg") || ext.equals("png")){
+                        File file = new File(path);
+                        Image image = ImageIO.read(file);
+                        Image scaledInstance = image.getScaledInstance(ImageLoad.getWidth(), ImageLoad.getHeight(), Image.SCALE_SMOOTH);
+                        ImageIcon img = new ImageIcon(scaledInstance);
+                        ImageLoad.setIcon(img);
+                    }
+                    else
+                    {
+                        JOptionPane.showMessageDialog(null, "Select An Image File");
+                        CardLayout cards = (CardLayout) container.getLayout();
+                        cards.show(container, "card3");
+                    }
+                    //System.out.println(name.getText());
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Select Image File");
+                    CardLayout cards = (CardLayout) container.getLayout();
+                    cards.show(container, "card3");
+                }
             }
-            else
-                JOptionPane.showMessageDialog(null, "Selct an Image");
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }
+            catch(Exception e)
+            {
+                e.printStackTrace();
+            }
         }
     }
 }

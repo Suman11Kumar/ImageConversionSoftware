@@ -142,8 +142,8 @@ public class MainLayout extends javax.swing.JFrame {
         });
         getContentPane().add(TextConverter, "card8");
         TextConverter.setName("7");
-        TextConversion_layout TC_layout = new TextConversion_layout();
-        TC_layout.run(TextConverter,getContentPane());
+        /*TextConversion_layout TC_layout = new TextConversion_layout();
+        TC_layout.run(TextConverter,getContentPane());*/
 
         MenuBar.setBackground(new java.awt.Color(255, 0, 51));
         MenuBar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -264,7 +264,9 @@ public class MainLayout extends javax.swing.JFrame {
     }//GEN-LAST:event_TextChooserComponentShown
 
     private void TextConverterComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_TextConverterComponentShown
-        // TODO add your handling code here:
+        TextConverter.removeAll();
+        TextConverter.revalidate();
+        new TextConversion_layout(TextConverter,getContentPane()).loadData();
     }//GEN-LAST:event_TextConverterComponentShown
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {                                     

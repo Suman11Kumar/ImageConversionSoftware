@@ -12,6 +12,7 @@ import java.awt.CardLayout;
 import java.awt.FlowLayout;
 import java.io.File;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 public class ImageChooser_layout {
     
@@ -86,11 +87,18 @@ public class ImageChooser_layout {
                 JFileChooser file=new JFileChooser();
                 int fc = file.showOpenDialog(null);
                 File f = file.getSelectedFile();
-                if(f != null)
+                String path = f.getAbsolutePath();
+                String ext = path.substring(path.lastIndexOf('.')+1);
+                if(f != null && (ext.equals("jpg")|| ext.equals("jpeg") || ext.equals("png")))
                 {
                     Global tmp = Global.getInstance();
                     tmp.setImageFile(f);
                     ImageSelected.setText(Global.getInstance().getImageFile());
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, "Select An Image File");
+                    f = null;
                 }
             }
         });
