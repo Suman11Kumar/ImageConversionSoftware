@@ -52,7 +52,7 @@ public class SignUp extends javax.swing.JFrame {
         reset = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(600, 300));
+        setMaximumSize(new java.awt.Dimension(750, 300));
         setPreferredSize(new java.awt.Dimension(675, 375));
 
         jPanel3.setBackground(new java.awt.Color(0, 0, 0));
