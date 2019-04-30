@@ -11,7 +11,7 @@ import java.awt.Container;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
+import java.io.*;
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -36,6 +36,8 @@ public final class ImageConversion_layout {
     private String path;
     private Thread t2;
     private final Container container;
+    private File ImageFIle;
+    private File TextFile;
     
     public ImageConversion_layout(JPanel ImageConversion, Container contentPane) {
         this.container = contentPane;
@@ -122,7 +124,7 @@ public final class ImageConversion_layout {
         @Override
         public void run() {
             convert.setEnabled(false);
-            Global tmp = Global.getInstance();
+            new image().Convert();
             for (int i=0; i<=100; i++){ //Progressively increment variable i
                 ProgressBar.setValue(i); //Set value
                 ProgressBar.repaint();
@@ -147,8 +149,8 @@ public final class ImageConversion_layout {
                     name.setText(path.substring(path.lastIndexOf('\\')+1));
                     String ext = path.substring(path.lastIndexOf('.')+1);
                     if(ext.equals("jpg")|| ext.equals("jpeg") || ext.equals("png")){
-                        File file = new File(path);
-                        Image image = ImageIO.read(file);
+                        ImageFIle = new File(path);
+                        Image image = ImageIO.read(ImageFIle);
                         Image scaledInstance = image.getScaledInstance(ImageLoad.getWidth(), ImageLoad.getHeight(), Image.SCALE_SMOOTH);
                         ImageIcon img = new ImageIcon(scaledInstance);
                         ImageLoad.setIcon(img);
@@ -173,4 +175,128 @@ public final class ImageConversion_layout {
             }
         }
     }
+    
+    private class image
+    {
+	public void Convert()
+	{
+                String name = name
+		File out = new File("1.txt");
+		File ascii = new File("3.txt");
+		image img = new image();
+		InputStream input=null;
+		OutputStream output = null;
+		FileWriter stringoutput = null;
+		try
+		{
+			input = new FileInputStream(ImageFIle);
+			output= new FileOutputStream(out);
+			stringoutput= new FileWriter(ascii);
+			try{
+				img.copy(input,output,stringoutput);
+			}
+			catch(Exception e){
+				e.printStackTrace();
+			}
+	
+			finally{
+				output.close();
+				stringoutput.close();
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+
+		finally{
+			try{
+				input.close();
+			}
+			catch(Exception e){
+				e.printStackTrace();
+			}	
+		}
+		FileReader a = null;
+		FileOutputStream b = null;
+		try{
+			a = new FileReader("3.txt");
+			b = new FileOutputStream("4.txt");
+			img.revert(a,b);
+		} 
+		catch(Exception e){
+			e.printStackTrace();
+		}
+
+		finally{
+			try{
+				a.close();
+				b.close();
+			}
+			catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public void copy(final InputStream in, final OutputStream out,final FileWriter ascii)
+	{
+		byte[] buffer = new byte[1024];
+		String s = null;
+		//BitArray bits  = null;
+		int count;
+		try{
+			while((count = in.read(buffer)) != -1)
+			{
+				out.write(buffer , 0 , count);
+				for(byte b:buffer){
+					s = String.format("%8s", Integer.toBinaryString(b & 0xff)).replace(' ','0');
+					ascii.write(s);
+				}
+				/*System.out.println("Printing:....        " + buffer.toString());
+				s = new String(buffer , "ASCII");
+				System.out.println("String Format :      " + s); 
+				//ascii.write(s);
+				//bits = new BitArray(buffer);*/
+			}
+			
+			out.flush();
+			
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	public String toString(char[] buffer)
+	{
+		String s = null;
+		for(int i = 0; i < buffer.length ;i++){
+			s += buffer[i];
+			s += ' ';
+		}
+		return s;
+	}
+
+	public void revert(final FileReader in, final FileOutputStream out){
+		char[] buffer = new char[8];
+		String s ;
+		int i = 0, k = 7;
+		try{
+			while(in.read(buffer,0,8) != -1){
+				s = new String(buffer);
+				i = Integer.parseInt(s,2);
+				byte b = (byte)i;
+				out.write(b);
+				i = 0;
+				k = 7;
+			}
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+}
+
 }
