@@ -10,6 +10,9 @@ import imagesecurity.TextToImage.TextConversion_layout;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Toolkit;
 import javax.swing.*;
 import javax.swing.ImageIcon;
 
@@ -24,6 +27,10 @@ public class MainLayout extends javax.swing.JFrame {
      */
     public MainLayout() {
         initComponents();
+        Toolkit toolkit=getToolkit();
+        Dimension size=toolkit.getScreenSize();
+        setLocation(size.width/2 - getWidth()/2,size.height/2 - getHeight()/2);
+       
         //createcustompanel();
     }
 
@@ -36,14 +43,54 @@ public class MainLayout extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        DashBoard = new javax.swing.JPanel();
-        CaptchaValidation = new javax.swing.JPanel();
-        ImageChooser = new javax.swing.JPanel();
-        ImageConversion = new javax.swing.JPanel();
-        ViewHistory = new javax.swing.JPanel();
-        TextChooser = new javax.swing.JPanel();
-        TextConverter = new javax.swing.JPanel();
-        MenuBar = new javax.swing.JMenuBar();
+        DashBoard = new javax.swing.JPanel(){
+            public void paintComponent(Graphics g){
+                Dimension size = this.getSize();
+                g.drawImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Icons/bodybg.jpg")), 0, 0, size.width, size.height, this);
+            }
+        };;
+        CaptchaValidation = new javax.swing.JPanel(){
+            public void paintComponent(Graphics g){
+                Dimension size = this.getSize();
+                g.drawImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Icons/bodybg.jpg")), 0, 0, size.width, size.height, this);
+            }
+        };;
+        ImageChooser = new javax.swing.JPanel(){
+            public void paintComponent(Graphics g){
+                Dimension size = this.getSize();
+                g.drawImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Icons/bodybg.jpg")), 0, 0, size.width, size.height, this);
+            }
+        };;
+        ImageConversion = new javax.swing.JPanel(){
+            public void paintComponent(Graphics g){
+                Dimension size = this.getSize();
+                g.drawImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Icons/bodybg.jpg")), 0, 0, size.width, size.height, this);
+            }
+        };;
+        ViewHistory = new javax.swing.JPanel(){
+            public void paintComponent(Graphics g){
+                Dimension size = this.getSize();
+                g.drawImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Icons/bodybg.jpg")), 0, 0, size.width, size.height, this);
+            }
+        };;
+        TextChooser = new javax.swing.JPanel(){
+            public void paintComponent(Graphics g){
+                Dimension size = this.getSize();
+                g.drawImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Icons/bodybg.jpg")), 0, 0, size.width, size.height, this);
+            }
+        };;
+        TextConverter = new javax.swing.JPanel(){
+            public void paintComponent(Graphics g){
+                Dimension size = this.getSize();
+                g.drawImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Icons/bodybg.jpg")), 0, 0, size.width, size.height, this);
+            }
+        };;
+        MenuBar = new javax.swing.JMenuBar(){
+            public void paintComponent(Graphics g){
+                Dimension size = this.getSize();
+                g.drawImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Icons/menu.jpg")), 0, 0, size.width, size.height, this);
+            }
+        };
         file = new javax.swing.JMenu();
         file_new = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
@@ -124,7 +171,7 @@ public class MainLayout extends javax.swing.JFrame {
         TextChooser.setLayout(TextChooserLayout);
         TextChooserLayout.setHorizontalGroup(
             TextChooserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 994, Short.MAX_VALUE)
+            .addGap(0, 700, Short.MAX_VALUE)
         );
         TextChooserLayout.setVerticalGroup(
             TextChooserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

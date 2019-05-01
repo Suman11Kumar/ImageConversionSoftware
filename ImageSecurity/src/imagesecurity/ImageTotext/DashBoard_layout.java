@@ -7,7 +7,12 @@ package imagesecurity.ImageTotext;
 
 import java.awt.CardLayout;
 import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Toolkit;
+
 import javax.swing.*;
+
 
 /**
  *
@@ -20,12 +25,11 @@ public class DashBoard_layout {
 
     public void run(javax.swing.JPanel DashBoard,Container container){
         
-        DashBoard.setBackground(new java.awt.Color(191, 181, 173));
         DashBoard.setLayout(null);
         RestoreImage = new javax.swing.JButton();
         ImageToText = new javax.swing.JButton();
         TextToImage = new javax.swing.JButton();
-        RestoreImage.setBackground(new java.awt.Color(150, 145, 183));
+        RestoreImage.setBackground(new java.awt.Color(211,211,211));
         RestoreImage.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         RestoreImage.setText("Unable to Restore Image");
         RestoreImage.addActionListener(new java.awt.event.ActionListener() {
@@ -37,7 +41,7 @@ public class DashBoard_layout {
         DashBoard.add(RestoreImage);
         RestoreImage.setBounds(250, 220, 280, 60);
 
-        ImageToText.setBackground(new java.awt.Color(150, 145, 183));
+        ImageToText.setBackground(new java.awt.Color(211,211,211));
         ImageToText.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         ImageToText.setText("Image Converter");
         ImageToText.addActionListener(new java.awt.event.ActionListener() {
@@ -49,7 +53,7 @@ public class DashBoard_layout {
         DashBoard.add(ImageToText);
         ImageToText.setBounds(70, 100, 280, 60);
 
-        TextToImage.setBackground(new java.awt.Color(150, 145, 183));
+        TextToImage.setBackground(new java.awt.Color(211,211,211));
         TextToImage.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         TextToImage.setText("Text Converter");
         TextToImage.addActionListener(new java.awt.event.ActionListener() {

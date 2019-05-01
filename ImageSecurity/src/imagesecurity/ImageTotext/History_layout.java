@@ -26,16 +26,16 @@ public class History_layout {
     
     private JPanel Captcha_InnerPanel;
     private JPanel Captcha_OuterPanel;
+    private StringBuffer str,s;
+    private JLabel captchaImage;
+    private JButton Refresh;
+    private JTextField Enter_cap;
+    private ImageIcon icon;
+    private JButton Submit;
     
     public void run(javax.swing.JPanel Validate, Container container) 
     {
-        
-        JLabel captchaImage;
-        JButton Refresh;
-        JTextField Enter_cap;
-        ImageIcon icon;
-        JButton Submit;
-        
+         
         Captcha_OuterPanel = new JPanel();
         Captcha_InnerPanel = new JPanel();
         captchaImage = new JLabel();
@@ -57,6 +57,8 @@ public class History_layout {
         Captcha_InnerPanel.add(captchaImage);
         CaptchaImage obj = new CaptchaImage();
         BufferedImage image = obj.getCaptchaImage();
+        String str1 = obj.getCaptchaString();
+        str = new StringBuffer(str1);
         //captchaImage.setPreferredSize(new java.awt.Dimension(300,300));
         icon = new ImageIcon(image);
         captchaImage.setIcon(icon);
@@ -94,18 +96,31 @@ public class History_layout {
                 BufferedImage image = obj.getCaptchaImage();
                 ImageIcon icon = new ImageIcon(image);
                 captchaImage.setIcon(icon);
-                
+                str = new StringBuffer(obj.getCaptchaString());
             }
-        });
-        
+                });
+        //StringBuffer s=new StringBuffer(Enter_cap.getText());
         Submit.addActionListener(new java.awt.event.ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e)                    
+            {
+                StringBuffer s = new StringBuffer(Enter_cap.getText());
+                System.out.println(s + " " + str);
+               if(str.toString().equals(s.toString()))
+                {
                CardLayout card = (CardLayout) container.getLayout();
                card.show(container, "card6");
-            }
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null,"Invalid Capcha");
+                }}
         });
         
         Captcha_OuterPanel.setOpaque(true);
+    }
+
+    private Object addFiller(StringBuffer stringBuffer) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

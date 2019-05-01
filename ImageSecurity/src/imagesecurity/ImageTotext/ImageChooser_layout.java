@@ -9,7 +9,10 @@ import imagesecurity.Global;
 import imagesecurity.camera;
 import java.awt.Container;
 import java.awt.CardLayout;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Graphics;
+import java.awt.Toolkit;
 import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -30,22 +33,36 @@ public class ImageChooser_layout {
     
     public void run(javax.swing.JPanel ImageChooser,Container container)
     {
-        choose = new javax.swing.JPanel();
-        camera = new javax.swing.JPanel();
-        browse = new javax.swing.JPanel();
+        choose = new javax.swing.JPanel(){
+            @Override
+            public void paintComponent(Graphics g){
+                Dimension size = this.getSize();
+                g.drawImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Icons/bodybg.jpg")), 0, 0, size.width, size.height, this);
+            }
+        };
+        camera = new javax.swing.JPanel(){
+            @Override
+            public void paintComponent(Graphics g){
+                Dimension size = this.getSize();
+                g.drawImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Icons/bodybg.jpg")), 0, 0, size.width, size.height, this);
+            }
+        };
+        browse = new javax.swing.JPanel(){
+            @Override
+            public void paintComponent(Graphics g){
+                Dimension size = this.getSize();
+                g.drawImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Icons/bodybg.jpg")), 0, 0, size.width, size.height, this);
+            }
+        };
         camera_btn = new javax.swing.JButton();
         browse_btn = new javax.swing.JButton();
         camera_lbl = new javax.swing.JLabel();
         browse_lbl = new javax.swing.JLabel();
         ImageSelected = new javax.swing.JLabel();
         
-        ImageChooser.setBackground(new java.awt.Color(191, 181, 173));
         choose.setLayout(new javax.swing.BoxLayout(choose, javax.swing.BoxLayout.X_AXIS));
         choose.setPreferredSize(new java.awt.Dimension(container.getWidth(), container.getHeight() * 3 / 4));
                 
-        camera.setBackground(new java.awt.Color(191, 181, 173));
-        browse.setBackground(new java.awt.Color(191, 181, 173));
-               
         camera.setLayout(new java.awt.FlowLayout(FlowLayout.LEFT, 100, 25));
         browse.setLayout(new java.awt.FlowLayout(FlowLayout.LEFT, 100, 25));
 
@@ -55,7 +72,7 @@ public class ImageChooser_layout {
         
         camera_btn.setFont(new java.awt.Font("Dialog", 0, 18));
         camera_btn.setText("Open Camera");
-        camera_btn.setBackground(new java.awt.Color(136, 181, 215));
+        camera_btn.setBackground(new java.awt.Color(211,211,211));
         camera_btn.setPreferredSize(new java.awt.Dimension(200, 50));
         camera_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,7 +94,7 @@ public class ImageChooser_layout {
         //browse_lbl.setHorizontalTextPosition(SwingConstants.CENTER);
         browse_lbl.setHorizontalAlignment(SwingConstants.CENTER);
         
-        browse_btn.setBackground(new java.awt.Color(136, 181, 215));
+        browse_btn.setBackground(new java.awt.Color(211,211,211));
         browse_btn.setFont(new java.awt.Font("Dialog", 0, 18));
         browse_btn.setText("Browse");
         browse_btn.setPreferredSize(new java.awt.Dimension(200, 50));

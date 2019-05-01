@@ -5,9 +5,12 @@
  */
 package imagesecurity.ImageTotext;
 
+import imagesecurity.Compression;
+import imagesecurity.Encryption;
 import imagesecurity.Global;
 import java.awt.CardLayout;
 import java.awt.Container;
+import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -30,7 +33,7 @@ public final class ImageConversion_layout {
     private javax.swing.JPanel ImageStatus;
     private javax.swing.JProgressBar ProgressBar;
     private javax.swing.JLabel ConversionStatus;
-    private javax.swing.JButton SaveText;
+    //private javax.swing.JButton SaveText;
     private javax.swing.JLabel name;
     private javax.swing.JButton convert;
     private String path;
@@ -38,9 +41,11 @@ public final class ImageConversion_layout {
     private final Container container;
     private File ImageFIle;
     private File TextFile;
-    
+    private int[][] matrix;
+            
     public ImageConversion_layout(JPanel ImageConversion, Container contentPane) {
         this.container = contentPane;
+        matrix = new int[10000][10000];
         build(ImageConversion);
     }
     
@@ -48,15 +53,13 @@ public final class ImageConversion_layout {
     {
         path = null;
         main = new javax.swing.JPanel();
-        SaveText = new javax.swing.JButton();
+        //SaveText = new javax.swing.JButton();
         ImageLoad = new javax.swing.JLabel();
         ImageStatus = new javax.swing.JPanel();
         ProgressBar = new javax.swing.JProgressBar();
         ConversionStatus = new javax.swing.JLabel();
         convert = new javax.swing.JButton();
         name = new javax.swing.JLabel();
-        
-        ImageConversion.setBackground(new java.awt.Color(191, 181, 173));
         
         main.setLayout(new javax.swing.BoxLayout(main, javax.swing.BoxLayout.X_AXIS));
         main.setMaximumSize(new java.awt.Dimension(500, 300));
@@ -104,13 +107,13 @@ public final class ImageConversion_layout {
         });
         ImageStatus.add(convert);
         
-        SaveText.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        SaveText.setText("Save Text File");
-        SaveText.setMargin(new java.awt.Insets(10, 50, 10, 50));
-        SaveText.setHorizontalAlignment(SwingConstants.CENTER);
+        //SaveText.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        //SaveText.setText("Save Text File");
+        //SaveText.setMargin(new java.awt.Insets(10, 50, 10, 50));
+        //SaveText.setHorizontalAlignment(SwingConstants.CENTER);
         main.add(ImageStatus);
         ImageConversion.add(main);
-        ImageConversion.add(SaveText);
+        //ImageConversion.add(SaveText);
         main.setOpaque(true);
     }
    
@@ -125,13 +128,13 @@ public final class ImageConversion_layout {
         public void run() {
             convert.setEnabled(false);
             new image().Convert();
-            for (int i=0; i<=100; i++){ //Progressively increment variable i
+            /*for (int i=0; i<=100; i++){ //Progressively increment variable i
                 ProgressBar.setValue(i); //Set value
                 ProgressBar.repaint();
                 ConversionStatus.setText("Convertion Status..." + i + "%");//Refresh graphics
                 try{Thread.sleep(50);} //Sleep 50 milliseconds
                 catch (InterruptedException err){}
-            }
+            }*/
         }
     }
     
@@ -169,7 +172,7 @@ public final class ImageConversion_layout {
                     cards.show(container, "card3");
                 }
             }
-            catch(Exception e)
+            catch(HeadlessException | IOException e)
             {
                 e.printStackTrace();
             }
@@ -178,22 +181,34 @@ public final class ImageConversion_layout {
     
     private class image
     {
+        private String inputfile;
+        private String outputfile;
+        private String bitoutputfile;
+        
+        image(){
+            inputfile = null;
+            outputfile = null;
+            bitoutputfile = null;
+        }
+        
 	public void Convert()
 	{
-                String name = name
-		File out = new File("1.txt");
-		File ascii = new File("3.txt");
+                String file =  name.getText().substring(0, name.getText().lastIndexOf('.') - 1);
+                outputfile = "ascii.txt";
+                bitoutputfile = "bit.txt";
+		File out = new File(outputfile);
+		File bit = new File(bitoutputfile);
 		image img = new image();
-		InputStream input=null;
-		OutputStream output = null;
-		FileWriter stringoutput = null;
+		FileInputStream input = null;
+                FileOutputStream output = null;
+                FileWriter bitoutput;
 		try
 		{
 			input = new FileInputStream(ImageFIle);
 			output= new FileOutputStream(out);
-			stringoutput= new FileWriter(ascii);
+			bitoutput= new FileWriter(bit);
 			try{
-				img.copy(input,output,stringoutput);
+				img.copy(input,output,bitoutput);
 			}
 			catch(Exception e){
 				e.printStackTrace();
@@ -201,10 +216,10 @@ public final class ImageConversion_layout {
 	
 			finally{
 				output.close();
-				stringoutput.close();
+				bitoutput.close();
 			}
 		}
-		catch(Exception e)
+		catch(IOException e)
 		{
 			e.printStackTrace();
 		}
@@ -213,18 +228,18 @@ public final class ImageConversion_layout {
 			try{
 				input.close();
 			}
-			catch(Exception e){
+			catch(IOException e){
 				e.printStackTrace();
 			}	
 		}
-		FileReader a = null;
+		/*FileReader a = null;
 		FileOutputStream b = null;
 		try{
-			a = new FileReader("3.txt");
+			a = new FileReader(file);
 			b = new FileOutputStream("4.txt");
 			img.revert(a,b);
 		} 
-		catch(Exception e){
+		catch(FileNotFoundException e){
 			e.printStackTrace();
 		}
 
@@ -233,13 +248,13 @@ public final class ImageConversion_layout {
 				a.close();
 				b.close();
 			}
-			catch(Exception e){
+			catch(IOException e){
 				e.printStackTrace();
 			}
-		}
+		}*/
 	}
 
-	public void copy(final InputStream in, final OutputStream out,final FileWriter ascii)
+	public void copy(InputStream in, final OutputStream out,final FileWriter bit)
 	{
 		byte[] buffer = new byte[1024];
 		String s = null;
@@ -249,21 +264,42 @@ public final class ImageConversion_layout {
 			while((count = in.read(buffer)) != -1)
 			{
 				out.write(buffer , 0 , count);
-				for(byte b:buffer){
-					s = String.format("%8s", Integer.toBinaryString(b & 0xff)).replace(' ','0');
-					ascii.write(s);
-				}
+                                
 				/*System.out.println("Printing:....        " + buffer.toString());
 				s = new String(buffer , "ASCII");
 				System.out.println("String Format :      " + s); 
 				//ascii.write(s);
 				//bits = new BitArray(buffer);*/
 			}
-			
+                        ProgressBar.setValue(0);
+			for (int i=ProgressBar.getValue(); i<=20; i++){ //Progressively increment variable i
+                            ProgressBar.setValue(i); //Set value
+                            ProgressBar.repaint();
+                            ConversionStatus.setText("Convertion Status..." + i + "%");//Refresh graphics
+                            try{Thread.sleep(50);} //Sleep 50 milliseconds
+                            catch (InterruptedException err){}
+                        }
 			out.flush();
-			
+                        in.close();
+                        outputfile ="ascii.txt";
+                        in = new FileInputStream(outputfile);
+                        inputfile = outputfile;
+                        outputfile = "compress.txt";
+                        OutputStream compressout = new FileOutputStream(outputfile);
+			compress(in,compressout);
+                        for(byte b:buffer){
+                            s = String.format("%8s", Integer.toBinaryString(b & 0xff)).replace(' ','0');
+                            bit.write(s);
+			}
+                        for (int i=ProgressBar.getValue(); i<=70; i++){ //Progressively increment variable i
+                            ProgressBar.setValue(i); //Set value
+                            ProgressBar.repaint();
+                            ConversionStatus.setText("Convertion Status..." + i + "%");//Refresh graphics
+                            try{Thread.sleep(50);} //Sleep 50 milliseconds
+                            catch (InterruptedException err){}
+                        }
 		}
-		catch(Exception e)
+		catch(IOException e)
 		{
 			e.printStackTrace();
 		}
@@ -296,7 +332,29 @@ public final class ImageConversion_layout {
 		catch(Exception e){
 			e.printStackTrace();
 		}
-	}
+        }
+
+        private void compress(InputStream in, OutputStream compressout) {
+            Compression comp = new Compression(in,compressout,'-');
+            for (int i=ProgressBar.getValue(); i<=50; i++){ //Progressively increment variable i
+                ProgressBar.setValue(i); //Set value
+                ProgressBar.repaint();
+                ConversionStatus.setText("Convertion Status..." + i + "%");//Refresh graphics
+                try{Thread.sleep(50);} //Sleep 50 milliseconds
+                catch (InterruptedException err){}
+            }
+            Encryption e = new Encryption(in,compressout,matrix,outputfile.length());
+            for (int i=ProgressBar.getValue(); i<=100; i++){ //Progressively increment variable i
+                ProgressBar.setValue(i); //Set value
+                ProgressBar.repaint();
+                ConversionStatus.setText("Convertion Status..." + i + "%");//Refresh graphics
+                try{Thread.sleep(50);} //Sleep 50 milliseconds
+                catch (InterruptedException err){}
+            }
+        }
+        
+       
+    }
 }
 
-}
+

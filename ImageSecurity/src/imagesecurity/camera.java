@@ -113,7 +113,7 @@ public class camera extends javax.swing.JFrame {
             File file=new File(String.format("capture-%d.jpg",System.currentTimeMillis()));
         
             ImageIO.write(wcam.getImage(),"JPG", file);
-            
+            JOptionPane.showMessageDialog(this ,file.getAbsolutePath(),file.getAbsolutePath(),0);
             Global tmp = Global.getInstance();
             tmp.setImageFile(file);
             
