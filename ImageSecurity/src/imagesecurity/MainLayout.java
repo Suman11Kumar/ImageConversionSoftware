@@ -53,10 +53,10 @@ public class MainLayout extends javax.swing.JFrame {
         ViewHistory = new javax.swing.JPanel();
         TextChooser = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-       // nextButton = new javax.swing.JButton();
+        nextButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-       // browseButtton = new javax.swing.JButton();
-     //   fileName = new javax.swing.JLabel();
+        browseButtton = new javax.swing.JButton();
+        fileName = new javax.swing.JLabel();
         TextConverter = new javax.swing.JPanel();
         MenuBar = new javax.swing.JMenuBar();
         file = new javax.swing.JMenu();
@@ -113,9 +113,9 @@ public class MainLayout extends javax.swing.JFrame {
         });
         ImageConversion.setLayout(new javax.swing.BoxLayout(ImageConversion, javax.swing.BoxLayout.Y_AXIS));
         getContentPane().add(ImageConversion, "card4");
-        ImageConversion.setBackground(new java.awt.Color(191, 181, 173));
+        //ImageConversion.setBackground(new java.awt.Color(191, 181, 173));
 
-        ImageConversion_layout ICON_layout = new ImageConversion_layout(ImageConversion, getContentPane());
+        //ImageConversion_layout ICON_layout = new ImageConversion_layout(ImageConversion, getContentPane());
         ImageConversion.setName("3");
 
         ViewHistory.setBackground(new java.awt.Color(191, 181, 173));
@@ -200,8 +200,8 @@ public class MainLayout extends javax.swing.JFrame {
 */
         getContentPane().add(TextChooser, "card7");
         TextChooser.setName("6");
-            TextChooser_layout ta=new  TextChooser_layout();
-            ta.run(TextChooser,getContentPane());
+           TextChooser_layout ta=new TextChooser_layout();
+           ta.run(TextChooser,getContentPane());
         TextConverter.setBackground(new java.awt.Color(191, 181, 173));
         getContentPane().add(TextConverter, "card8");
         TextConverter.setName("7");
@@ -413,9 +413,9 @@ public class MainLayout extends javax.swing.JFrame {
     private javax.swing.JPanel TextConverter;
     private javax.swing.JPanel ViewHistory;
     private javax.swing.JMenuItem back;
-   // private javax.swing.JButton browseButtton;
+    private javax.swing.JButton browseButtton;
     private javax.swing.JMenu file;
-  //  private javax.swing.JLabel fileName;
+    private javax.swing.JLabel fileName;
     private javax.swing.JMenuItem file_exit;
     private javax.swing.JMenuItem file_history;
     private javax.swing.JMenuItem file_new;
@@ -425,7 +425,7 @@ public class MainLayout extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
- //   private javax.swing.JButton nextButton;
-   // // End of variables declaration//GEN-END:variables
+    private javax.swing.JButton nextButton;
+    // End of variables declaration//GEN-END:variables
 
 }
