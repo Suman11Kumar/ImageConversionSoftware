@@ -95,6 +95,7 @@ public class MainLayout extends javax.swing.JFrame {
                 g.drawImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Icons/menu.jpg")), 0, 0, size.width, size.height, this);
             }
         };
+ 
         file = new javax.swing.JMenu();
         file_new = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
@@ -226,6 +227,7 @@ public class MainLayout extends javax.swing.JFrame {
                 TextChooserComponentShown(evt);
             }
         });
+
 
         javax.swing.GroupLayout TextChooserLayout = new javax.swing.GroupLayout(TextChooser);
         TextChooser.setLayout(TextChooserLayout);
@@ -382,6 +384,26 @@ public class MainLayout extends javax.swing.JFrame {
         TextConverter.revalidate();
         new TextConversion_layout(TextConverter,getContentPane()).loadData();
     }//GEN-LAST:event_TextConverterComponentShown
+
+/*   private void browseButttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_browseButttonActionPerformed
+                     JFileChooser file=new JFileChooser();
+                     
+         FileNameExtensionFilter filter = new FileNameExtensionFilter("TEXT FILES", "txt", "text"); 
+        file.setFileFilter(filter);
+        file.showOpenDialog(null);
+       
+        //File file=new file("E:\WORK SPACE\import.txt");
+        File f = file.getSelectedFile();
+        System.out.println(f.getAbsolutePath());
+        String name=file.getSelectedFile().getName();
+        fileName.setText(name);
+    }//GEN-LAST:event_browseButttonActionPerformed
+
+    private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
+                 CardLayout card = (CardLayout)getContentPane().getLayout();
+                card.show(getContentPane(), "card8");        // TODO add your handling code here:
+    }//GEN-LAST:event_nextButtonActionPerformed
+*/
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {                                     
         Container container = getContentPane();
