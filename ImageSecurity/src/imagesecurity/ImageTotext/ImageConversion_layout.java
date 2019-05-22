@@ -5,9 +5,9 @@
  */
 package imagesecurity.ImageTotext;
 
-import imagesecurity.Compression;
 import imagesecurity.Encryption;
 import imagesecurity.Global;
+import imagesecurity.LZW;
 import java.awt.CardLayout;
 import java.awt.Container;
 import java.awt.HeadlessException;
@@ -41,11 +41,9 @@ public final class ImageConversion_layout {
     private final Container container;
     private File ImageFIle;
     private File TextFile;
-    private int[][] matrix;
             
     public ImageConversion_layout(JPanel ImageConversion, Container contentPane) {
         this.container = contentPane;
-        matrix = new int[10000][10000];
         build(ImageConversion);
     }
     
@@ -182,58 +180,24 @@ public final class ImageConversion_layout {
     private class image
     {
         private String inputfile;
-        private String outputfile;
+        private String byteoutputfile;
+        private String compressedFile;
         private String bitoutputfile;
         
         image(){
             inputfile = null;
-            outputfile = null;
+            byteoutputfile = null;
             bitoutputfile = null;
         }
         
 	public void Convert()
 	{
-                String file =  name.getText().substring(0, name.getText().lastIndexOf('.') - 1);
-                outputfile = "ascii.txt";
-                bitoutputfile = "bit.txt";
-		File out = new File(outputfile);
-		File bit = new File(bitoutputfile);
-		image img = new image();
-		FileInputStream input = null;
-                FileOutputStream output = null;
-                FileWriter bitoutput;
-		try
-		{
-			input = new FileInputStream(ImageFIle);
-			output= new FileOutputStream(out);
-			bitoutput= new FileWriter(bit);
-			try{
-				img.copy(input,output,bitoutput);
-			}
-			catch(Exception e){
-				e.printStackTrace();
-			}
-	
-			finally{
-				output.close();
-				bitoutput.close();
-			}
-		}
-		catch(IOException e)
-		{
-			e.printStackTrace();
-		}
-
-		finally{
-			try{
-				input.close();
-			}
-			catch(IOException e){
-				e.printStackTrace();
-			}	
-		}
-		/*FileReader a = null;
-		FileOutputStream b = null;
+                inputfile =  name.getText().substring(0, name.getText().lastIndexOf('.') - 1);
+                byteoutputfile = inputfile + "oa";
+                bitoutputfile = inputfile + "obit";
+		
+                convertByte();
+		/*FileOutputStream b = null;
 		try{
 			a = new FileReader(file);
 			b = new FileOutputStream("4.txt");
@@ -254,57 +218,78 @@ public final class ImageConversion_layout {
 		}*/
 	}
 
-	public void copy(InputStream in, final OutputStream out,final FileWriter bit)
+	private void convertByte()
 	{
-		byte[] buffer = new byte[1024];
-		String s = null;
-		//BitArray bits  = null;
-		int count;
-		try{
-			while((count = in.read(buffer)) != -1)
-			{
-				out.write(buffer , 0 , count);
-                                
+            InputStream in;
+            OutputStream out;
+            byte[] buffer = new byte[1024];
+            String s = null;
+            int count;
+            
+            try{
+                in = new FileInputStream(inputfile);
+                out = new FileOutputStream(byteoutputfile);
+		while((count = in.read(buffer)) != -1)
+		{
+                    out.write(buffer , 0 , count);
+                        
 				/*System.out.println("Printing:....        " + buffer.toString());
 				s = new String(buffer , "ASCII");
 				System.out.println("String Format :      " + s); 
 				//ascii.write(s);
 				//bits = new BitArray(buffer);*/
-			}
-                        ProgressBar.setValue(0);
-			for (int i=ProgressBar.getValue(); i<=20; i++){ //Progressively increment variable i
-                            ProgressBar.setValue(i); //Set value
-                            ProgressBar.repaint();
-                            ConversionStatus.setText("Convertion Status..." + i + "%");//Refresh graphics
-                            try{Thread.sleep(50);} //Sleep 50 milliseconds
-                            catch (InterruptedException err){}
-                        }
-			out.flush();
-                        in.close();
-                        outputfile ="ascii.txt";
-                        in = new FileInputStream(outputfile);
-                        inputfile = outputfile;
-                        outputfile = "compress.txt";
-                        OutputStream compressout = new FileOutputStream(outputfile);
-			compress(in,compressout);
-                        for(byte b:buffer){
-                            s = String.format("%8s", Integer.toBinaryString(b & 0xff)).replace(' ','0');
-                            bit.write(s);
-			}
-                        for (int i=ProgressBar.getValue(); i<=70; i++){ //Progressively increment variable i
-                            ProgressBar.setValue(i); //Set value
-                            ProgressBar.repaint();
-                            ConversionStatus.setText("Convertion Status..." + i + "%");//Refresh graphics
-                            try{Thread.sleep(50);} //Sleep 50 milliseconds
-                            catch (InterruptedException err){}
-                        }
 		}
-		catch(IOException e)
-		{
-			e.printStackTrace();
-		}
-	}
+                ProgressBar.setValue(0);
+		for (int i=ProgressBar.getValue(); i<=20; i++){ //Progressively increment variable i
+                    ProgressBar.setValue(i); //Set value
+                    ProgressBar.repaint();
+                    ConversionStatus.setText("Convertion Status..." + i + "%");//Refresh graphics
+                    try{Thread.sleep(50);} //Sleep 50 milliseconds
+                    catch (InterruptedException err){}
+                }
+                out.flush();
+                in.close();
+                out.close();
+                compress();
+            }
+            catch(IOException e){
+                e.printStackTrace();
+            }
+        }
 
+        private void convertBit(){
+            InputStream in;
+            FileWriter out;
+            byte[] buffer = new byte[1024];
+            String s = null;
+            
+            try{
+                
+                in = new FileInputStream(compressedFile);
+                out = new FileWriter(bitoutputfile);
+                //compress(in,compressout);
+                for(byte b:buffer){
+                    s = String.format("%8s", Integer.toBinaryString(b & 0xff)).replace(' ','0');
+                    out.write(s);
+                }
+                for (int i=ProgressBar.getValue(); i<=70; i++){ //Progressively increment variable i
+                    ProgressBar.setValue(i); //Set value
+                    ProgressBar.repaint();
+                    ConversionStatus.setText("Convertion Status..." + i + "%");//Refresh graphics
+                    try{Thread.sleep(50);} //Sleep 50 milliseconds
+                    catch (InterruptedException err){}
+                }
+                out.flush();
+                in.close();
+                out.close();
+                Encryption encrypt = new Encryption(bitoutputfile);
+            }
+            catch(IOException e)
+            {
+		e.printStackTrace();
+            }
+        }
+        
 	public String toString(char[] buffer)
 	{
 		String s = null;
@@ -334,16 +319,10 @@ public final class ImageConversion_layout {
 		}
         }
 
-        private void compress(InputStream in, OutputStream compressout) {
-            Compression comp = new Compression(in,compressout,'-');
-            for (int i=ProgressBar.getValue(); i<=50; i++){ //Progressively increment variable i
-                ProgressBar.setValue(i); //Set value
-                ProgressBar.repaint();
-                ConversionStatus.setText("Convertion Status..." + i + "%");//Refresh graphics
-                try{Thread.sleep(50);} //Sleep 50 milliseconds
-                catch (InterruptedException err){}
-            }
-            Encryption e = new Encryption(in,compressout,matrix,outputfile.length());
+        private void compress() {
+            
+            LZW comp = new LZW();
+            comp.encode(byteoutputfile, compressedFile);
             for (int i=ProgressBar.getValue(); i<=100; i++){ //Progressively increment variable i
                 ProgressBar.setValue(i); //Set value
                 ProgressBar.repaint();
@@ -351,9 +330,9 @@ public final class ImageConversion_layout {
                 try{Thread.sleep(50);} //Sleep 50 milliseconds
                 catch (InterruptedException err){}
             }
+            convertBit();
         }
-        
-       
+              
     }
 }
 
