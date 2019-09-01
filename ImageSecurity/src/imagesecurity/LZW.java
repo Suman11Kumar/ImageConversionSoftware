@@ -20,7 +20,9 @@ public class LZW{
         input = null;
         output = null;
         dictionery = new HashMap<String,Integer>();
-        code = 0;
+        dictionery.put("0", 1);
+        dictionery.put("1", 2);
+        code = 3;
     }
 
     public void encode(String in, String out){
@@ -32,20 +34,22 @@ public class LZW{
             output = new FileWriter(out);
         
             if((ch = input.read()) != -1){
-                s = Integer.toString(ch);
+                s = Character.toString((char)ch);
                 
                 while((ch = input.read()) != -1)
                 {
-                    c = Integer.toString(ch);
+                    c = Character.toString((char)ch);
+                    System.out.println(s + " " + c);
                     temp = s+c;
                     if(dictionery.containsKey(temp)){
                         s = temp;
                     }
                     else
                     {
-                        dictionery.put(temp, ++code);
+                        dictionery.put(temp, code);
                         s=c;
                         output.write(dictionery.get(s));
+                        code++;
                     }
                 }
                 output.write(dictionery.get(s));
