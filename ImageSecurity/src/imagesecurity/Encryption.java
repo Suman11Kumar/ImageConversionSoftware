@@ -61,26 +61,33 @@ public class Encryption {
             /*filedata = new String (Files.readAllBytes(Paths.get(file1)));
             filesize = filedata.length();
             System.out.println(filedata);*/
-            File f = new File(file1);
-            BufferedReader reader = new BufferedReader(new FileReader(f));
-            filesize = f.length();
-           
+            File f1 = new File(file1);
+            BufferedReader reader = new BufferedReader(new FileReader(f1));
+            FileWriter f2 = new FileWriter(file2);
+            
+            filesize = f1.length();
+            System.out.println(filesize);
             Random rand = new Random();
-            long n = rand.nextLong() % filesize;
-            if( n < 100){
-                n += 100;
-            }
+            int n = rand.nextInt((65535 - 100 + 1)) +100;
             
             reader.skip(n);
             while((ch = reader.read()) != -1){
-                filedata += Integer.toString(ch);
+                f2.append((char)ch);
             }
             reader.close();
-            reader = new BufferedReader(new FileReader(f));
+            reader = new BufferedReader(new FileReader(f1));
             while(count < n && (ch = reader.read()) != -1){
-                filedata += Integer.toString(ch);
+                f2.append((char)ch);
                 count++;
             }
+            StringBuffer key = new StringBuffer(Integer.toBinaryString(n));
+            if(key.length() < 16){
+                while(key.length() < 16){
+                   key.insert(0, "0");
+                }
+            }
+            f2.append(key);
+            filesize += 16;
         } 
         catch (IOException ex) {
             Logger.getLogger(Encryption.class.getName()).log(Level.SEVERE, null, ex);
@@ -109,12 +116,12 @@ public class Encryption {
             newl1 = new StringBuffer(1000000000);
             reader = new BufferedReader(new FileReader(file2));
             while((ch = reader.read()) != -1 && count < l1size){
-                l1 = l1.append(Integer.toString(ch));
+                l1 = l1.append(Character.toString((char)ch));
                 count++;
             }
             count = 0;
             while((ch = reader.read()) != -1 && count < r1size){
-                r1 = r1.append(Integer.toString(ch));
+                r1 = r1.append(Character.toString((char)ch));
                 count++;
             }
             for(i = 0; i < r1size; i++){
@@ -138,9 +145,37 @@ public class Encryption {
                 else
                     r1.setCharAt(i, '1');
             }
+            FileWriter file = new FileWriter(file1);
+            file.write(l1.toString());
+            file.append(r1.toString());
+            StringBuffer key = new StringBuffer(Long.toBinaryString(filesize));
+            while(key.length() < 30){
+                key.insert(0, "0");
+            }
         }
         catch(Exception e){
             e.printStackTrace();
         }
     }
+    
+    /*private void chaining(){
+        //input in file1;
+        //output in file2;
+        
+        int r = new Random().nextInt(100-10+1)+1;
+        BufferedReader in;
+        try{
+            in = new BufferedReader(new FileReader(file1));
+            long size_of_block = filesize / r;
+            for(int i = 0; i < r; i++){
+                in.skip(filesize / 2);
+            }
+            
+        }
+        catch(FileNotFoundException e){
+            e.printStackTrace();
+        }
+        
+    }*/
+    
 }
